@@ -1,2 +1,3 @@
-# project-food
-Repositório da aplicação web desenvolvida para a matéria de Engenharia de Software 2
+# Project-food
+
+Repositório para a aplicação web desenvolvida como parte da avaliação da matéria de Engenharia de Software 2.
