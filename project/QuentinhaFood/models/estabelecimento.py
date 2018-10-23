@@ -1,9 +1,10 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
+from .usuario import Usuario
 
 class Estabelecimento(models.Model):
-	nome_usuario = models.ForeignKey('usuario.User', on_delete=models.CASCADE, blank=False, null=False)
+	nome_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, blank=False, null=False)
 	razao_social = models.CharField(max_length=100, blank=False, null=False)
 	cnpj = models.IntegerField(validators=[validate_phone], blank=False, null=False)
 	telefone_estabelecimento = models.IntegerField(validators=[validate_phone], blank=False, null=False)

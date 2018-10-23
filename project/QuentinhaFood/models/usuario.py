@@ -1,9 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
-class User(models.Model):
-	nome_usuario = models.CharField(max_length=100, blank=False, null=False)
+class Usuario(models.Model):
+	usuario = models.OneToOneField(User, on_delete=models.SET_NULL)
 	cpf = models.IntegerField(validators=[validate_cpf], blank=False, null=False)
 	email_usuario = models.EmailField(blank=False, null=False)
 	telefone_usuario = models.IntegerField(validators=[validate_phone], blank=False, null=False)
