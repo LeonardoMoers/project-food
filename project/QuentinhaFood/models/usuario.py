@@ -3,13 +3,13 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 class User(models.Model):
-	nome_usuario = models.CharField(max_length=100)
-	cpf = models.IntegerField(validators=[validate_cpf])
-	email_usuario = models.EmailField()
-	telefone_usuario = models.IntegerField(validators=[validate_phone])
+	nome_usuario = models.CharField(max_length=100, blank=False, null=False)
+	cpf = models.IntegerField(validators=[validate_cpf], blank=False, null=False)
+	email_usuario = models.EmailField(blank=False, null=False)
+	telefone_usuario = models.IntegerField(validators=[validate_phone], blank=False, null=False)
 	telefoneAlternativo_usuario = models.IntegerField(validators=[validate_phone])
 	apelido_usuario = models.CharField(max_length=100)
-	imagem_usuario = models.ImageField()
+	imagem_usuario = models.ImageField(blank=False, null=False)
 # se necessário definir o options do ImageField posteriormente;
 
 def validate_cpf(value):

@@ -3,17 +3,17 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 class Estabelecimento(models.Model):
-	nome_usuario = models.ForeignKey('usuario.User', on_delete=models.CASCADE)
-	razao_social = models.CharField(max_length=100)
-	cnpj = models.IntegerField(validators=[validate_phone])
-	telefone_estabelecimento = models.IntegerField(validators=[validate_phone])
+	nome_usuario = models.ForeignKey('usuario.User', on_delete=models.CASCADE, blank=False, null=False)
+	razao_social = models.CharField(max_length=100, blank=False, null=False)
+	cnpj = models.IntegerField(validators=[validate_phone], blank=False, null=False)
+	telefone_estabelecimento = models.IntegerField(validators=[validate_phone], blank=False, null=False)
 	telefoneAlternativo_estabelecimento = models.IntegerField(validators=[validate_phone])
-	email_estabelecimento = models.EmailField()
+	email_estabelecimento = models.EmailField(blank=False, null=False)
 	site_estabelecimento = models.CharField()
 	facebook_estabelecimento = models.CharField()
 	twitter_estabelecimento = models.CharField()
 	instagram_estabelecimento = models.CharField()
-	imagem_estabelecimento = models.ImageField()
+	imagem_estabelecimento = models.ImageField(blank=False, null=False)
 
 def validate_phone(value):
 	aux = str(value)
