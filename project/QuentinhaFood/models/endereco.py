@@ -7,4 +7,4 @@ class Endereco(models.Model):
     usuario_idusuario=models.ForeignKey(Usuario, on_delete=models.CASCADE, blank=False, null=False)
     rua_endereco=models.CharField(max_length=200, blank=False, null=False)
     numero_endereco=models.IntegerField(blank=False, null=False)
-    complemento_endereco=models.CharField()
+    complemento_endereco=models.CharField(max_length=200)
