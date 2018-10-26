@@ -4,22 +4,24 @@ from django.utils.translation import ugettext_lazy as _
 from .usuario import Usuario
 
 def validate_phone(value):
-	aux = str(value)
-	if len(aux) < 8 or len(aux) > 11:
+	if len(value) < 8 or len(value) > 11:
 		raise ValidationError(
 			_('%(value)s is not valid, please follow example: (xx) 9 XXXX-XXXX or XXXX-XXXX'),
 			params={'value': value}
 		)
 
 class Estabelecimento(models.Model):
-	nome_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, blank=False, null=False)
-	razao_social = models.CharField(max_length=100, blank=False, null=False)
-	cnpj = models.IntegerField(validators=[validate_phone], blank=False, null=False)
-	telefone_estabelecimento = models.IntegerField(validators=[validate_phone], blank=False, null=False)
-	telefoneAlternativo_estabelecimento = models.IntegerField(validators=[validate_phone])
-	email_estabelecimento = models.EmailField(blank=False, null=False)
-	site_estabelecimento = models.CharField(max_length=200)
-	facebook_estabelecimento = models.CharField(max_length=200)
-	twitter_estabelecimento = models.CharField(max_length=200)
-	instagram_estabelecimento = models.CharField(max_length=200)
-	imagem_estabelecimento = models.ImageField(blank=False, null=False)
+	nome_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+	razao_social = models.CharField(max_length=100)
+	cnpj = models.CharField(max_length=100, validators=[validate_phone])
+	telefone_estabelecimento = models.CharField(max_length=100, validators=[validate_phone])
+	telefoneAlternativo_estabelecimento = models.CharField(max_length=100, validators=[validate_phone], blank=True, null=True)
+	email_estabelecimento = models.EmailField()
+	site_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
+	facebook_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
+	twitter_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
+	instagram_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
+	imagem_estabelecimento = models.ImageField()
+
+	def __str__(self):
+		return self.razao_social
