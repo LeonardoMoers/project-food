@@ -1,0 +1,163 @@
+[{
+	"model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Acre"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Alagoas"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Amazonas"
+    }
+},
+     {
+	"model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Amapá"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Bahia"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Ceará"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Distrito Federal"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Espírito Santo"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Goiás"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Maranhão"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Minas Gerais"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Mato Grosso do Sul"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Mato Grosso"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Pará"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Paraíba"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Pernambuco"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Piauí"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Paraná"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Rio de Janeiro"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Rio Grande do Norte"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Rondônia"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Roraima"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Rio Grande do Sul"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Santa Catarina"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+	"fields": {
+	"nome_estado": "Sergipe"
+    }
+
+},
+     {
+    "model": "QuentinhaFood.Estado",
+    "fields": {
+	"nome_estado": "São Paulo"
+    }
+},
+     {
+    "model": "QuentinhaFood.Estado",
+    "fields": {
+	"nome_estado": "Tocantins"
+    }
+}]
