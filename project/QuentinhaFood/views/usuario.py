@@ -2,11 +2,9 @@
 from django.shortcuts import render
 from django.views.generic.base import View
 
-from gestaoapp.forms.busca import Busca
-from gestaoapp.forms.usuario import FormUsuario, FormUsuarioEdit
-from gestaoapp.models import Vinculo
-from gestaoapp.models.usuario import Usuario
-from gestaoapp.views.loginrequired import LoginRequiredMixin
+from QuentinhaFood.forms.usuario import FormUsuario, FormUsuarioEdit
+from QuentinhaFood.models.usuario import Usuario
+from QuentinhaFood.views.loginrequired import LoginRequiredMixin
 
 
 class CadastroUsuario(View):

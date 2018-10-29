@@ -1,1 +1,3 @@
-from .usuario import usuario
+from django.shortcuts import render
+
+from QuentinhaFood.views.usuario import *
