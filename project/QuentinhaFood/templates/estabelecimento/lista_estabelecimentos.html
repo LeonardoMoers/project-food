@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Lista de Estabelecimentos{% endblock %}
+{% block conteudo %}
+
+{% for field in estabelecimentos %}
+    <div>
+        <p>{{field.razao_social}}</p>
+        <p>{{field.nome_usuario}}</p> <!-- Adicionar o campo de imagem no lugar de nome_usuario -->
+    </div>
+{% endfor %}
+
+
+{% endblock %}

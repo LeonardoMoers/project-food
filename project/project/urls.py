@@ -15,9 +15,11 @@ urlpatterns = [
     url(r'^editar_usuario/(?P<usuario_id>\d+)/$', my_views.CadastroUsuario.as_view()),
 
     url(r'^cadastro_estabelecimento/$', my_views.add_estabelecimento, name='cadastroEstabelecimento'),
+    url(r'^lista_estabelecimento/$', my_views.listaEstabelecimentos, name='listaEstabelecimentos'),
     
 
 ]
+
 
 
 

@@ -12,7 +12,7 @@ class EstabelecimentoForm(forms.ModelForm):
     facebook = forms.CharField(max_length=200)
     twitter = forms.CharField(max_length=200)
     instagram = forms.CharField(max_length=200)
-    imagem_estabelecimento = forms.ImageField()
+  #  imagem_estabelecimento = forms.ImageField()
 
     class Meta:
         model = Estabelecimento

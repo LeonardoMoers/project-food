@@ -25,7 +25,9 @@ class Estabelecimento(models.Model):
 	facebook_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
 	twitter_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
 	instagram_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
-	imagem_estabelecimento = models.ImageField()
+#	imagem_estabelecimento = models.ImageField()
+	
+	objetos = models.Manager()
 
 	def __str__(self):
 		return self.razao_social
