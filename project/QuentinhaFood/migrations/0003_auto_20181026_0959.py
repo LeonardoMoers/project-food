@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='estabelecimento',
             name='cnpj',
-            field=models.CharField(max_length=100, validators=[QuentinhaFood.models.estabelecimento.validate_phone]),
+            field=models.CharField(max_length=100, validators=[QuentinhaFood.models.estabelecimento.Estabelecimento.validate_phone]),
         ),
         migrations.AlterField(
             model_name='estabelecimento',
@@ -34,12 +34,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='estabelecimento',
             name='telefoneAlternativo_estabelecimento',
-            field=models.CharField(blank=True, max_length=100, null=True, validators=[QuentinhaFood.models.estabelecimento.validate_phone]),
+            field=models.CharField(blank=True, max_length=100, null=True, validators=[QuentinhaFood.models.estabelecimento.Estabelecimento.validate_phone]),
         ),
         migrations.AlterField(
             model_name='estabelecimento',
             name='telefone_estabelecimento',
-            field=models.CharField(max_length=100, validators=[QuentinhaFood.models.estabelecimento.validate_phone]),
+            field=models.CharField(max_length=100, validators=[QuentinhaFood.models.estabelecimento.Estabelecimento.validate_phone]),
         ),
         migrations.AlterField(
             model_name='estabelecimento',

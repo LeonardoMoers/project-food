@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-from QuentinhaFood.views.usuario import *
+from .usuario import CadastroUsuario
+from .cadastro_estabelecimento import add_estabelecimento

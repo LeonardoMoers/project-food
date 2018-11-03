@@ -46,9 +46,9 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('razao_social', models.CharField(max_length=100)),
-                ('cnpj', models.IntegerField(validators=[QuentinhaFood.models.estabelecimento.validate_phone])),
-                ('telefone_estabelecimento', models.IntegerField(validators=[QuentinhaFood.models.estabelecimento.validate_phone])),
-                ('telefoneAlternativo_estabelecimento', models.IntegerField(validators=[QuentinhaFood.models.estabelecimento.validate_phone])),
+                ('cnpj', models.IntegerField(validators=[QuentinhaFood.models.estabelecimento.Estabelecimento.validate_phone])),
+                ('telefone_estabelecimento', models.IntegerField(validators=[QuentinhaFood.models.estabelecimento.Estabelecimento.validate_phone])),
+                ('telefoneAlternativo_estabelecimento', models.IntegerField(validators=[QuentinhaFood.models.estabelecimento.Estabelecimento.validate_phone])),
                 ('email_estabelecimento', models.EmailField(max_length=254)),
                 ('site_estabelecimento', models.CharField(max_length=200)),
                 ('facebook_estabelecimento', models.CharField(max_length=200)),
