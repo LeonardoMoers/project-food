@@ -3,29 +3,10 @@
 {% block titulo %} Cadastro de Usuário{% endblock %}
 {% block conteudo %}
 
-nome
-{{form.first_name}}<br><br>
-sobrenome
-{{form.last_name}}<br><br>
-Usuario
-{{form.username}}<br><br>
-Senha
-{{form.password}}<br><br>
-Conf Senha
-{{form.confirma_senha}}<br><br>
-CPF
-{{form.cpf}}<br><br>
-telefone
-{{form.telefone_usuario}}<br><br>
-tele
-{{form.telefoneAlternativo_usuario}}<br><br>
-apelido
-{{form.apelido_usuario}}<br><br>
-iamgem
-{{form.imagem_usuario}}<br><br>
-
-
-
-
+<form action="{% url 'usuario' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Cadastrar!">
+</form>
 
 {% endblock %}

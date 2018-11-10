@@ -11,8 +11,7 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     #path('usuario/', CadastroUsuario.as_view(), name='usuario'),
     url(r'admin/', admin.site.urls),
-    url(r'^usuario/', my_views.CadastroUsuario.as_view(), name='usuario'),
-    url(r'^editar_usuario/(?P<usuario_id>\d+)/$', my_views.CadastroUsuario.as_view()),
+    url(r'^usuario/', my_views.cadastroUser, name='usuario'),
 
     url(r'^cadastro_estabelecimento/$', my_views.add_estabelecimento, name='cadastroEstabelecimento'),
     url(r'^lista_estabelecimento/$', my_views.listaEstabelecimentos, name='listaEstabelecimentos'),

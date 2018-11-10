@@ -12,7 +12,7 @@ def add_estabelecimento(request):
 
         if form.is_valid():
             form.save(commit=True)
-            return HttpResponseRedirect('/usuario/')
+            return HttpResponseRedirect('/lista_estabelecimento/')
 
         else:
             print(form.errors)
