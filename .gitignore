@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+#yarn
+project/static/node_modules
+
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
