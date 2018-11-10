@@ -24,5 +24,6 @@ class Estabelecimento(models.Model):
 	instagram_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
 	imagem_estabelecimento = models.ImageField(upload_to="images/estabelecimento")
 	
+	objetos = models.Manager()
 	def __str__(self):
 		return self.razao_social
