@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Quentinha Food {% endblock %}
+{% block conteudo %}
+
+<nav>
+    <ul>
+        {% for url in urls %}
+        <li>
+            <a href="{% url url.link %}">{{ url.titulo }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
+
+{% endblock %}
