@@ -3,7 +3,7 @@
 {% block titulo %} Cadastro de Estabelecimento{% endblock %}
 {% block conteudo %}
 
-<form action="{% url 'cadastroEstabelecimento' %}" method="POST">
+<form action="{% url 'cadastroEstabelecimento' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Cadastrar">

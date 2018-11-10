@@ -3,8 +3,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from .usuario import Usuario
 
-
-
 class Estabelecimento(models.Model):
 
 	def validate_phone(self):
@@ -14,10 +12,9 @@ class Estabelecimento(models.Model):
 				params={'value': self}
 			)
 
-
 	nome_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 	razao_social = models.CharField(max_length=100)
-	cnpj = models.CharField(max_length=100, validators=[validate_phone])
+	cnpj = models.CharField(max_length=100)
 	telefone_estabelecimento = models.CharField(max_length=100, validators=[validate_phone])
 	telefoneAlternativo_estabelecimento = models.CharField(max_length=100, validators=[validate_phone], blank=True, null=True)
 	email_estabelecimento = models.EmailField()
@@ -25,9 +22,7 @@ class Estabelecimento(models.Model):
 	facebook_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
 	twitter_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
 	instagram_estabelecimento = models.CharField(max_length=200, blank=True, null=True)
-#	imagem_estabelecimento = models.ImageField()
+	imagem_estabelecimento = models.ImageField(upload_to="images/estabelecimento")
 	
-	objetos = models.Manager()
-
 	def __str__(self):
 		return self.razao_social

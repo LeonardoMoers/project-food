@@ -21,6 +21,5 @@ class Usuario(User):
 	cpf = models.CharField(max_length=100 ,validators=[validate_cpf])
 	telefone_usuario = models.CharField(max_length=100, validators=[validate_phone])
 	telefoneAlternativo_usuario = models.CharField(max_length=100, validators=[validate_phone], blank=True, null=True)
-	#apelido_usuario = models.CharField(max_length=100)
-	#imagem_usuario = models.ImageField()
+	imagem_usuario = models.ImageField(upload_to="images/usuario")
 	

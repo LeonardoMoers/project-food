@@ -12,10 +12,9 @@ urlpatterns = [
     #path('usuario/', CadastroUsuario.as_view(), name='usuario'),
     url(r'admin/', admin.site.urls),
     url(r'^usuario/', my_views.cadastroUser, name='usuario'),
-
+    url(r'^cadastro_produto/$', my_views.add_produto, name='cadastroProduto'),
     url(r'^cadastro_estabelecimento/$', my_views.add_estabelecimento, name='cadastroEstabelecimento'),
     url(r'^lista_estabelecimento/$', my_views.listaEstabelecimentos, name='listaEstabelecimentos'),
-    
 
 ]
 

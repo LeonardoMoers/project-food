@@ -3,9 +3,8 @@ from ..forms.usuario import UserForm
 
 def cadastroUser(request):
     template = 'usuario/cadastro.html'
-
     if request.method == 'POST':
-        form = UserForm(data=request.POST)
+        form = UserForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             user.set_password(user.password)
@@ -16,4 +15,4 @@ def cadastroUser(request):
         form = UserForm()
 
     context_dict = {'form': form}
-    return render(request, template, context_dict)            
+    return render(request, template, context_dict)
