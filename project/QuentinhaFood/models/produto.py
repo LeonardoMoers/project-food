@@ -10,6 +10,8 @@ class Produto(models.Model):
     adicionais_produto = models.CharField(max_length=100, blank=True, null=True)
     imagem_produto = models.ImageField(upload_to="images/produto")
 
+    objetos = models.Manager()
+
     def __str__(self):
         return self.nome_produto
 
