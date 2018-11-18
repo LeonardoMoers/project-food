@@ -14,7 +14,6 @@ def add_estabelecimento(request):
             teste = form.save(commit=False)
             user = Usuario.objects.get(username=request.user)
             teste.nome_usuario = user
-            print(user)
             teste.save()
             return HttpResponseRedirect('/usuario/')
         else:
