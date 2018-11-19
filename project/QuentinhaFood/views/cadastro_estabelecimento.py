@@ -11,10 +11,10 @@ def add_estabelecimento(request):
         form = EstabelecimentoForm(request.POST, request.FILES)
 
         if form.is_valid():
-            teste = form.save(commit=False)
+            estabelecimento = form.save(commit=False)
             user = Usuario.objects.get(username=request.user)
-            teste.nome_usuario = user
-            teste.save()
+            estabelecimento.nome_usuario = user
+            estabelecimento.save()
             return HttpResponseRedirect('/usuario/')
         else:
             print(form.errors)
