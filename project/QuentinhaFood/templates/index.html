@@ -3,7 +3,9 @@
 {% block titulo %} Quentinha Food {% endblock %}
 {% block conteudo %}
 
-<nav>
+<div class="container" id="app">
+    <p> [[ title ]] </p>
+
     <ul>
         {% for url in urls %}
         <li>
@@ -11,6 +13,16 @@
         </li>
         {% endfor %}
     </ul>
-</nav>
+</div>
+
+<script>
+    new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#app',
+        data: {
+            title: 'Teste VueJS'
+        }
+    })
+</script>
 
 {% endblock %}

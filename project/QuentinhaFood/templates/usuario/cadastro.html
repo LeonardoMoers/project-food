@@ -3,10 +3,114 @@
 {% block titulo %} Cadastro de Usuário{% endblock %}
 {% block conteudo %}
 
-<form action="{% url 'usuario' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Cadastrar!">
-</form>
+
+<div class="row">
+    <div class="col s12">
+        <h3>Cadastro</h3>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <form action="{% url 'usuario' %}" method="post" name="formUsuario" id="formUsuario" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-field col s6">
+                <label for="username">Nome de usuario:</label>
+                {{form.username}}
+                <span class="helper-text" v-bind:data-error="wrongUsername"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="email">Email:</label>
+                {{form.email}}
+                <span class="helper-text"  v-bind:data-error="wrongEmail"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="password">Senha:</label>
+                {{form.password}}
+                <span class="helper-text"  v-bind:data-error="wrongPassword"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="confirmar_password">Confirmar senha:</label>
+                {{form.confirmar_password}}
+                <span class="helper-text"  v-bind:data-error="wrongConfPassword"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="first_name">Nome completo:</label>
+                {{form.first_name}}
+                <span class="helper-text"  v-bind:data-error="wrongName"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="cpf">cpf:</label>
+                {{form.cpf}}
+                <span class="helper-text"  v-bind:data-error="wrongCpf"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="telefone_usuario">Telefone:</label>
+                {{form.telefone_usuario}}
+                <span class="helper-text"  v-bind:data-error="wrongPhone"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="telefoneAlternativo_usuario">Telefone alternativo:</label>
+                {{form.telefoneAlternativo_usuario}}
+                <span class="helper-text"  v-bind:data-error="wrongOtherPhone"></span>
+            </div>
+            <div class="file-field input-field col s6">
+                <div class="btn waves-effect waves-light grey darken-1">
+                    <span>Foto</span>
+                    {{form.imagem_usuario}}
+                    <span class="helper-text" v-bind:data-error="wrongFile"></span>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path" type="text">
+                </div>
+            </div>
+            <div class="col s6 right-align">
+                <a class="btn waves-effect waves-light grey darken-1" v-on:click="validaCampos">Cadastrar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#formUsuario',
+        data: {
+            username: '',
+            email: '',
+            password: '',
+            confirmar_password: null,
+            first_name: null,
+            cpf: null,
+            telefone_usuario: null,
+            telefoneAlternativo_usuario: null,
+            wrongUsername: '',
+            wrongEmail: '',
+            wrongPassword: '',
+            wrongConfPassword: '',
+            wrongName: '',
+            wrongCpf: '',
+            wrongPhone: '',
+            wrongOtherPhone: '',
+            wrongFile: '',
+        },
+        methods: {
+            validaCampos: function () {
+                if(this.username.length < 3) {
+                    document.getElementById("username").focus();
+                    this.wrongUsername = 'Username deve ter mais do que 3 caracteres';
+                    document.getElementById("username").classList.add("invalid");
+                    return 0;
+                }
+                if (this.password != this.confirmar_password) {
+                    alert('As senhas não coencidem');
+                    return 0;
+                }
+                document.formUsuario.submit();
+            }
+        },
+    })
+</script>
+
 
 {% endblock %}
