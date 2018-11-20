@@ -22,37 +22,37 @@
             <div class="input-field col s6">
                 <label for="email">Email:</label>
                 {{form.email}}
-                <span class="helper-text"  v-bind:data-error="wrongEmail"></span>
+                <span class="helper-text" v-bind:data-error="wrongEmail"></span>
             </div>
             <div class="input-field col s6">
                 <label for="password">Senha:</label>
                 {{form.password}}
-                <span class="helper-text"  v-bind:data-error="wrongPassword"></span>
+                <span class="helper-text" v-bind:data-error="wrongPassword"></span>
             </div>
             <div class="input-field col s6">
                 <label for="confirmar_password">Confirmar senha:</label>
                 {{form.confirmar_password}}
-                <span class="helper-text"  v-bind:data-error="wrongConfPassword"></span>
+                <span class="helper-text" v-bind:data-error="wrongConfPassword"></span>
             </div>
             <div class="input-field col s6">
                 <label for="first_name">Nome completo:</label>
                 {{form.first_name}}
-                <span class="helper-text"  v-bind:data-error="wrongName"></span>
+                <span class="helper-text" v-bind:data-error="wrongName"></span>
             </div>
             <div class="input-field col s6">
                 <label for="cpf">cpf:</label>
                 {{form.cpf}}
-                <span class="helper-text"  v-bind:data-error="wrongCpf"></span>
+                <span class="helper-text" v-bind:data-error="wrongCpf"></span>
             </div>
             <div class="input-field col s6">
                 <label for="telefone_usuario">Telefone:</label>
                 {{form.telefone_usuario}}
-                <span class="helper-text"  v-bind:data-error="wrongPhone"></span>
+                <span class="helper-text" v-bind:data-error="wrongPhone"></span>
             </div>
             <div class="input-field col s6">
                 <label for="telefoneAlternativo_usuario">Telefone alternativo:</label>
                 {{form.telefoneAlternativo_usuario}}
-                <span class="helper-text"  v-bind:data-error="wrongOtherPhone"></span>
+                <span class="helper-text" v-bind:data-error="wrongOtherPhone"></span>
             </div>
             <div class="file-field input-field col s6">
                 <div class="btn waves-effect waves-light grey darken-1">
@@ -79,7 +79,7 @@
             username: '',
             email: '',
             password: '',
-            confirmar_password: null,
+            confirmar_password: '',
             first_name: null,
             cpf: null,
             telefone_usuario: null,
@@ -96,17 +96,67 @@
         },
         methods: {
             validaCampos: function () {
-                if(this.username.length < 3) {
+                if (this.username.length < 3 || this.username.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/) == null ) {
                     document.getElementById("username").focus();
-                    this.wrongUsername = 'Username deve ter mais do que 3 caracteres';
+                    this.wrongUsername = 'Username só pode conter letras e no minimo 3 caracteres';
                     document.getElementById("username").classList.add("invalid");
                     return 0;
                 }
+                if (!this.validaEmail()) {
+                    document.getElementById("email").focus();
+                    this.wrongEmail = 'Email Invalido';
+                    document.getElementById("email").classList.add("invalid");
+                    return 0;
+                }
+                if (!this.validaPassword()) {
+                    document.getElementById("password").focus();
+                    this.wrongPassword = 'Senha deve conter + de 5 digitos, uma letra maiuscula, um numero e um caractere especial';
+                    document.getElementById("password").classList.add("invalid");
+                    return 0;
+                }
                 if (this.password != this.confirmar_password) {
-                    alert('As senhas não coencidem');
+                    document.getElementById("confirmar_password").focus();
+                    this.wrongConfPassword = 'As senhas não coincidem';
+                    document.getElementById("confirmar_password").classList.add("invalid");
+                    return 0;
+                }
+                if (this.first_name.length < 3 || this.first_name.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/)) {
+                    document.getElementById("first_name").focus();
+                    this.wrongName = 'Nome Invalido';
+                    document.getElementById("first_name").classList.add("invalid");
                     return 0;
                 }
                 document.formUsuario.submit();
+            },
+            validaEmail: function () {
+                usuario = this.email.substring(0, this.email.indexOf("@"));
+                dominio = this.email.substring(this.email.indexOf("@") + 1, this.email.length);
+                if ((usuario.length >= 1) && (dominio.length >= 3) && (usuario.search("@") == -1) &&
+                    (dominio.search("@") == -1) && (usuario.search(" ") == -1) && (dominio.search(" ") == -1) &&
+                    (dominio.search(".") != -1) && (dominio.indexOf(".") >= 1) && (dominio.lastIndexOf(".") < dominio.length - 1)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            },
+            validaPassword: function () {
+                if (this.password.length <= 5) {
+                    return false;
+                }
+                if (this.password.match(/^[a-zA-Z0-9]+$/) == null) {
+                    if (this.password.match(/[a-z]/) == null) {
+                        return false;
+                    }
+                    if (this.password.match(/[A-Z]/) == null) {
+                        return false;
+                    }
+                    if (this.password.match(/[0-9]/) == null) {
+                        return false;
+                    }
+                    return true;
+                }
+                return false;
             }
         },
     })
