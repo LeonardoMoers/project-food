@@ -1,0 +1,34 @@
+{% extends '../base.html' %}
+
+{% block titulo %} Perfil de usuario{% endblock %}
+{% block conteudo %}
+
+<h1>Usuário</h1>
+
+<div>
+    <p>{{usuario.username}}</p>
+    <p>{{usuario.first_name}}</p>
+    <p>{{usuario.email}}</p>
+    <p>{{usuario.cpf}}</p>
+    <p>{{usuario.telefone_usuario}}</p>
+    <p>{{usuario.telefoneAlternativo_usuario}}</p>
+    <p>{{usuario.imagem_usuario}}</p>
+</div>
+{% if estabelecimento %}
+<h1>Estabelecimento</h1>
+	<div>
+	    <p>{{estabelecimento.razao_social}}</p>
+	    <p>{{estabelecimento.descricao_estabelecimento}}</p>
+	    <p>{{estabelecimento.cnpj}}</p>
+	    <p>{{estabelecimento.email_estabelecimento}}</p>
+	    <p>{{estabelecimento.telefone_estabelecimento}}</p>
+	    <p>{{estabelecimento.telefoneAlternativo_estabelecimento}}</p>
+	    <p>{{estabelecimento.site_estabelecimento}}</p>
+	    <p>{{estabelecimento.facebook_estabelecimento}}</p>
+	    <p>{{estabelecimento.twitter_estabelecimento}}</p>
+	    <p>{{estabelecimento.instagram_estabelecimento}}</p>
+	    <p>{{estabelecimento.imagem_estabelecimento}}</p>
+	</div>
+{% endif %}
+
+{% endblock %}

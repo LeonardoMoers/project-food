@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'admin/', admin.site.urls),
     url(r'^usuario/$', my_views.cadastroUser, name='usuario'),
     url(r'^usuario/(?P<id>\w+)', my_views.updateUser, name='update_usuario'),
+    url(r'^perfil/$', my_views.perfilUsuario, name='perfil_usuario'),
 
     url( r'^entrar/$',auth_views.LoginView.as_view(
         template_name='usuario/login.html'), 
