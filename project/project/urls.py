@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^cadastro_estabelecimento/$', my_views.add_estabelecimento, name='cadastroEstabelecimento'),
     url(r'^lista_estabelecimento/$', my_views.listaEstabelecimentos, name='listaEstabelecimentos'),
 
+    url(r'^lista_estabelecimento/(?P<nomeEstabelecimento>\w+)$', my_views.listaProdutos, name='listaProdutos'),
 ]
 
 

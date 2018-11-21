@@ -15,7 +15,7 @@ def add_estabelecimento(request):
             user = Usuario.objects.get(username=request.user)
             estabelecimento.nome_usuario = user
             estabelecimento.save()
-            return HttpResponseRedirect('/usuario/')
+            return HttpResponseRedirect('/lista_estabelecimento/')
         else:
             print(form.errors)
     else:
