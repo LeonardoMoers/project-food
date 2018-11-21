@@ -96,7 +96,7 @@
         },
         methods: {
             validaCampos: function () {
-                if (this.username.length < 3 || this.username.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/) == null ) {
+                if (this.username.length < 3 || this.username.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/) == null) {
                     document.getElementById("username").focus();
                     this.wrongUsername = 'Username só pode conter letras e no minimo 3 caracteres';
                     document.getElementById("username").classList.add("invalid");
@@ -157,7 +157,15 @@
                     return true;
                 }
                 return false;
+            },
+            mascarasImputs: function () {
+                // $('#cpf').mask("(99) 99999-9999");
+                // $('#telefone_usuario').mask("(99) 99999-9999");
+                // $('#telefoneAlternativo_usuario').mask("(99) 99999-9999");
             }
+        },
+        mounted: function () {
+            this.mascarasImputs();
         },
     })
 </script>
