@@ -1,7 +1,11 @@
-{% extends 'base.html' %}
+{% extends '../base.html' %}
 
 {% block titulo %} Lista de Estabelecimentos{% endblock %}
 {% block conteudo %}
+
+{% if user.is_authenticated %}
+<a href="{% url 'cadastroEstabelecimento' %}">Torne-se um fornecedor!</a>
+{% endif %}
 
 {% for field in estabelecimentos %}
     <div>
@@ -9,6 +13,5 @@
         <p>{{field.nome_usuario}}</p> <!-- Adicionar o campo de imagem no lugar de nome_usuario -->
     </div>
 {% endfor %}
-
 
 {% endblock %}

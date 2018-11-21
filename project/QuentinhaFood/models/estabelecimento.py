@@ -14,6 +14,7 @@ class Estabelecimento(models.Model):
 
 	nome_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 	razao_social = models.CharField(max_length=100)
+	descricao_estabelecimento = models.CharField(max_length=300)
 	cnpj = models.CharField(max_length=100)
 	telefone_estabelecimento = models.CharField(max_length=100, validators=[validate_phone])
 	telefoneAlternativo_estabelecimento = models.CharField(max_length=100, validators=[validate_phone], blank=True, null=True)
@@ -25,5 +26,6 @@ class Estabelecimento(models.Model):
 	imagem_estabelecimento = models.ImageField(upload_to="images/estabelecimento")
 	
 	objetos = models.Manager()
+	
 	def __str__(self):
 		return self.razao_social

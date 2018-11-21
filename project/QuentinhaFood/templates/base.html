@@ -11,7 +11,7 @@
     <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'node_modules/vue/dist/vue.min.js' %}"></script>
     <script src="{% static 'node_modules/vue/dist/vue.min.js' %}"></script>
-    
+
 
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     <script src="{% static 'js/main.js' %}"></script>
@@ -29,6 +29,11 @@
                 <li><a href="{% url 'usuario' %}">Cadastrar-se</a></li>
                 <li><a href="{% url 'cadastroProduto' %}">Cadastrar Produto</a></li>
                 <li><a href="{% url 'cadastroEstabelecimento' %}">Cadastre seu restaurante</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Sair</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Entrar</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>

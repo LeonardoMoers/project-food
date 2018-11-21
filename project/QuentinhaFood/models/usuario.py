@@ -22,4 +22,5 @@ class Usuario(User):
 	telefone_usuario = models.CharField(max_length=100, validators=[validate_phone])
 	telefoneAlternativo_usuario = models.CharField(max_length=100, validators=[validate_phone], blank=True, null=True)
 	imagem_usuario = models.ImageField(upload_to="images/usuario")
+	objetos = models.Manager()
 	

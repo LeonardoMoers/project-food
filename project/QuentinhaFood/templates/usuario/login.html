@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Cadastro de Usuário{% endblock %}
+{% block conteudo %}
+
+<h1>LOGIN</h1>
+<form action="{% url 'login' %}" method="POST">
+    {%csrf_token%}
+
+    {{form.non_field_errors}}
+
+    {% for field in form %}
+        <div>
+            {{field.label_tag}}
+            {{field}}
+            {{field.errors}}
+        </div>
+    {% endfor %}
+
+    <input type="submit" value="Entrar">
+</form>
+
+<a href="{% url 'usuario' %}">Cadastre-se</a>
+
+
+{% endblock %}

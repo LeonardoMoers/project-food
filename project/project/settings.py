@@ -115,3 +115,8 @@ STATIC_URL = '/static/'
 #Media files (upload, etc.)
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/' 
+
+#Auth
+LOGIN_URL = '/entrar/'
+LOGIN_REDIRECT_URL = '/lista_estabelecimento/' #QuentinhaFood:lista_estabelecimento
+LOGIN_LOGOUT = '/sair/'
