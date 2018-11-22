@@ -15,7 +15,7 @@
     <p>{{usuario.imagem_usuario}}</p>
 </div>
 <div>
-	<a href="{% url 'update_usuario/{{ usuario.id }}' %}"></a>
+	<a href="{% url 'update_usuario' usuario.id %}">Editar Dados de Usuário</a>
 </div>
 
 {% if estabelecimento %}
