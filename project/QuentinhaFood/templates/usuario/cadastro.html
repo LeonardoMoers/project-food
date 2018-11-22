@@ -3,10 +3,22 @@
 {% block titulo %} Cadastro de Usuário{% endblock %}
 {% block conteudo %}
 
-<form action="{% url 'usuario' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+<p>{{msg}}</p> <!-- Mensagem de sucesso ou fracasso -->
+
+<form action="{% url 'usuario' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+    
+    
     {{form.as_p}}
-    <input type="submit" value="Cadastrar!">
+
+    {% if editar == True %}
+        <input type="hidden" name="user_id" value="{{user_id}}">
+        <input type="submit" value="Salvar">
+    {% else %}
+        <input type="submit" value="Cadastrar">
+    {% endif %}
+    
+    
 </form>
+
 
 {% endblock %}
