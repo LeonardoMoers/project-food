@@ -20,24 +20,34 @@ class CadastroUsuario(View):
 
     def post(self, request):
         if request.method == 'POST':
-            user_id = request.POST['user_id']
+            try:
+                user_id = request.POST['user_id']
 
-            if user_id:
-                userObj = Usuario.objects.get(id=user_id)
-                form = UpdateUser(instance=userObj, data=request.POST)
-            else:
+                if user_id:
+                    userObj = Usuario.objects.get(id=user_id)
+                    form = UpdateUser(instance=userObj, data=request.POST)
+
+                if form.is_valid():
+                    user = form.save()
+                    msg = "Seus dados foram atualizados!"
+
+                    if 'imagem_usuario' in request.FILES:
+                        user.imagem_usuario = request.FILES['imagem_usuario']
+
+                    user.save()
+                    return render(request, self.template_name, {'form': form, 'msg': msg})
+
+            except:
                 form = UserForm(request.POST, request.FILES)
-
-            if form.is_valid():
-                user = form.save()
-                msg = "Seus dados foram atualizados!"
+                if form.is_valid():
+                    user = form.save()
 
                 if 'imagem_usuario' in request.FILES:
                     user.imagem_usuario = request.FILES['imagem_usuario']
 
                 user.save()
 
-                return render(request, self.template_name, {'form': form, 'msg': msg})
+                return render(request, self.template_name, {'form': form})
             else:
                 form = UserForm()
                 msg = "Ocorreu um erro!"
