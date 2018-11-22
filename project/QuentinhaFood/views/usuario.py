@@ -41,12 +41,13 @@ class CadastroUsuario(View):
                 form = UserForm(request.POST, request.FILES)
                 if form.is_valid():
                     user = form.save()
+                    user.set_password(user.password)
 
                 if 'imagem_usuario' in request.FILES:
                     user.imagem_usuario = request.FILES['imagem_usuario']
 
                 user.save()
-
+                login(request, user)
                 return render(request, self.template_name, {'form': form})
             else:
                 form = UserForm()

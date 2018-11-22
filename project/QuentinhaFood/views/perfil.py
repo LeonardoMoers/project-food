@@ -8,7 +8,7 @@ from ..models.estabelecimento import Estabelecimento
 def perfilUsuario(request):
     template_path = "usuario/perfil_usuario.html"
     usuario = Usuario.objetos.get(username=request.user)
-    estabelecimento = Estabelecimento.objetos.get(nome_usuario=usuario)
+    estabelecimento = Estabelecimento.objetos.filter(nome_usuario=usuario).values()
     if not (estabelecimento is None):
     	context_dict = {'usuario': usuario , 'estabelecimento': estabelecimento}
     else:
