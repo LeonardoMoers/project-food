@@ -14,6 +14,10 @@
     <p>{{usuario.telefoneAlternativo_usuario}}</p>
     <p>{{usuario.imagem_usuario}}</p>
 </div>
+<div>
+	<a href="{% url 'update_usuario' usuario.id %}">Editar Dados de Usuário</a>
+</div>
+
 {% if estabelecimento %}
 <h1>Estabelecimento</h1>
 	<div>
