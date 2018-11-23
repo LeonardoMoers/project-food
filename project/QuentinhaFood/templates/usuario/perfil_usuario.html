@@ -3,28 +3,41 @@
 {% block titulo %} Perfil de usuario{% endblock %}
 {% block conteudo %}
 
-<h1>Usuário</h1>
-
-<div>
-    <p>{{usuario.username}}</p>
-    <p>{{usuario.first_name}}</p>
-    <p>{{usuario.email}}</p>
-    <p>{{usuario.cpf}}</p>
-    <p>{{usuario.telefone_usuario}}</p>
-    <p>{{usuario.telefoneAlternativo_usuario}}</p>
-    <p>{{usuario.imagem_usuario}}</p>
+<div class="row">
+    <div class="col s12">
+        <h3>Usuário</h3>
+        <hr>
+    </div>
 </div>
-<div>
-	<a href="{% url 'update_usuario' usuario.id %}">Editar dados de usuário</a>
+<div class="row">
+    <div class="col s12">
+        <p>{{usuario.username}}</p>
+        <p>{{usuario.first_name}}</p>
+        <p>{{usuario.email}}</p>
+        <p>{{usuario.cpf}}</p>
+        <p>{{usuario.telefone_usuario}}</p>
+        <p>{{usuario.telefoneAlternativo_usuario}}</p>
+        <p>{{usuario.imagem_usuario}}</p>
+        <div class="col s6">
+            <a class="btn waves-effect waves-light grey darken-1" id="cadastrar" href="{% url 'update_usuario' usuario.id %}">Editar dados de usuário</a>
+        </div>
+    </div>
 </div>
 
 {% if estabelecimento %}
-<h1>Estabelecimento</h1>
-	<div>
-	    <p>{{estabelecimento.razao_social}}</p>
-	    <p>{{estabelecimento.descricao_estabelecimento}}</p>
-	    <p>{{estabelecimento.imagem_estabelecimento}}</p>
-	</div>
+<div class="row">
+    <div class="col s12">
+        <h3>Estabelecimento</h3>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <p>{{estabelecimento.razao_social}}</p>
+        <p>{{estabelecimento.descricao_estabelecimento}}</p>
+        <p>{{estabelecimento.imagem_estabelecimento}}</p>
+    </div>
+</div>
 {% endif %}
 
 {% endblock %}

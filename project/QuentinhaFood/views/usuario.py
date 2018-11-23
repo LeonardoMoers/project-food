@@ -54,6 +54,8 @@ class CadastroUsuario(View):
                     login(request, user)
                     return HttpResponseRedirect('/lista_estabelecimento/')
                 else:
-                    form = UserForm()
-                    msg = ''
-                    return render(request, self.template_name, {'form': form, 'msg': msg})
+                    print(form.errors)
+            else:
+                form = UserForm()
+                msg = ''
+                return render(request, self.template_name, {'form': form, 'msg': msg})
