@@ -4,5 +4,4 @@ from .usuario import *
 from .cadastro_estabelecimento import add_estabelecimento
 from .lista_estabelecimentos import listaEstabelecimentos
 from .cadastro_produto import add_produto
-from .index import index
 from .perfil import perfilUsuario

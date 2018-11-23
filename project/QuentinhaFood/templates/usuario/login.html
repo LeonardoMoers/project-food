@@ -3,24 +3,55 @@
 {% block titulo %} Cadastro de Usuário{% endblock %}
 {% block conteudo %}
 
-<h1>LOGIN</h1>
-<form action="{% url 'login' %}" method="POST">
-    {%csrf_token%}
+<div class="row">
+    <div class="col s12">
+        <h3>Login</h3>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <form action="{% url 'login' %}" method="post" name="formLogin" id="formLogin">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="input-field col s6">
+                <label for="login">{{field.label_tag}}</label>
+                {{field}}
+                {{field.errors}}
+            </div>
+            {% endfor %}
+            <div class="col s12 right-align">
+                <a class="btn waves-effect waves-light grey darken-1" id="logar" v-on:click="submitLogin">Logar</a>
+            </div>
+        </form>
+    </div>
+</div>
 
-    {{form.non_field_errors}}
+<script>
+    new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#formLogin',
+        data: {
+            msg: '{{form.non_field_errors}}',
+        },
+        methods: {
+            submitLogin: function () {
+                document.formLogin.submit();
+            },
+        },
+        mounted: function () {
+            if (this.msg != '') {
+                M.toast({ html: this.msg });
+            }
 
-    {% for field in form %}
-        <div>
-            {{field.label_tag}}
-            {{field}}
-            {{field.errors}}
-        </div>
-    {% endfor %}
-
-    <input type="submit" value="Entrar">
-</form>
-
-<a href="{% url 'usuario' %}">Cadastre-se</a>
-
+            document.formLogin.addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("logar").click();
+                }
+            });
+        }
+    })
+</script>
 
 {% endblock %}

@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="col s6 right-align">
-                <a class="btn waves-effect waves-light grey darken-1" v-on:click="validaCampos">Cadastrar</a>
+                <a class="btn waves-effect waves-light grey darken-1" id="cadastrar" v-on:click="validaCampos">Cadastrar</a>
             </div>
         </form>
     </div>
@@ -120,7 +120,7 @@
                     document.getElementById("confirmar_password").classList.add("invalid");
                     return 0;
                 }
-                if (this.first_name.length < 3 || this.first_name.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/)) {
+                if (this.first_name.length < 3 || this.first_name.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/) == null) {
                     document.getElementById("first_name").focus();
                     this.wrongName = 'Nome Invalido';
                     document.getElementById("first_name").classList.add("invalid");
@@ -166,6 +166,12 @@
         },
         mounted: function () {
             this.mascarasImputs();
+            document.formUsuario.addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("cadastrar").click();
+                }
+            });
         },
     })
 </script>

@@ -10,7 +10,7 @@ from QuentinhaFood import views as my_views
 
 
 urlpatterns = [
-    url(r'^$', my_views.index, name='index'),
+    url(r'^$', my_views.listaEstabelecimentos, name='index'),
     url(r'admin/', admin.site.urls),
     url(r'^usuario/$', my_views.cadastroUser, name='usuario'),
     url(r'^usuario/(?P<id>\w+)', my_views.updateUser, name='update_usuario'),

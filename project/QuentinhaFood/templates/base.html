@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     {% load staticfiles %}
@@ -24,14 +24,13 @@
         <div class="nav-wrapper deep-orange darken-2">
             <a href="{% url 'index' %}" class="brand-logo right">Quentinha Food</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="{% url 'index' %}">Inicio</a></li>
                 <li><a href="{% url 'listaEstabelecimentos' %}">Estabelecimentos</a></li>
-                <li><a href="{% url 'usuario' %}">Cadastrar-se</a></li>
+                {% if user.is_authenticated %}
                 <li><a href="{% url 'cadastroProduto' %}">Cadastrar Produto</a></li>
                 <li><a href="{% url 'cadastroEstabelecimento' %}">Cadastre seu restaurante</a></li>
-                {% if user.is_authenticated %}
                 <li><a href="{% url 'logout' %}">Sair</a></li>
                 {% else %}
+                <li><a href="{% url 'usuario' %}">Cadastrar-se</a></li>
                 <li><a href="{% url 'login' %}">Entrar</a></li>
                 {% endif %}
             </ul>
