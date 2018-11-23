@@ -15,7 +15,7 @@
     <p>{{usuario.imagem_usuario}}</p>
 </div>
 <div>
-	<a href="{% url 'update_usuario' usuario.id %}">Editar Dados de Usuário</a>
+	<a href="{% url 'update_usuario' usuario.id %}">Editar dados de usuário</a>
 </div>
 
 {% if estabelecimento %}
@@ -23,14 +23,6 @@
 	<div>
 	    <p>{{estabelecimento.razao_social}}</p>
 	    <p>{{estabelecimento.descricao_estabelecimento}}</p>
-	    <p>{{estabelecimento.cnpj}}</p>
-	    <p>{{estabelecimento.email_estabelecimento}}</p>
-	    <p>{{estabelecimento.telefone_estabelecimento}}</p>
-	    <p>{{estabelecimento.telefoneAlternativo_estabelecimento}}</p>
-	    <p>{{estabelecimento.site_estabelecimento}}</p>
-	    <p>{{estabelecimento.facebook_estabelecimento}}</p>
-	    <p>{{estabelecimento.twitter_estabelecimento}}</p>
-	    <p>{{estabelecimento.instagram_estabelecimento}}</p>
 	    <p>{{estabelecimento.imagem_estabelecimento}}</p>
 	</div>
 {% endif %}

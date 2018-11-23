@@ -6,12 +6,13 @@ from ..models.estabelecimento import Estabelecimento
 
 @login_required
 def listaProdutos(request, nomeEstabelecimento):
-    template_path = "estabelecimento/lista_produtos.html"
+    template_name = "estabelecimento/pagina_estabelecimento.html"
     estabelecimento = Estabelecimento.objetos.get(razao_social=nomeEstabelecimento)
-    produtos = Produto.objetos.filter(estabelecimento_idestabelecimento=estabelecimento.id).values()
+    produtos = Produto.objetos.all().filter(estabelecimento_idestabelecimento=estabelecimento)
+  
     if produtos is None:
         context_dict = {'estabelecimento': estabelecimento}
     else:
         context_dict = {'estabelecimento': estabelecimento, 'produtos': produtos}
     
-    return render(request, template_path, context_dict)
+    return render(request, template_name, context_dict)

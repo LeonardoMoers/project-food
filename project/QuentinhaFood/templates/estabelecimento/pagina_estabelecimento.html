@@ -20,13 +20,8 @@
 
 {% if produtos %}
 	<h1>Cardápio</h1>
-	{% for field in produtos %}
-		<p>{{field.categoria_idCategoria}}</p>
-		<p>{{field.subCategoria_idsubCategoria}}</p>
-		<p>{{field.nome_produto}}</p>
-		<p>{{field.descricao_produto}}</p>
-		<p>{{field.adicionais_produto}}</p>
-		<p>{{field.imagem_produto}}</p>
+	{% for produto in produtos %}
+		{{produto}}
 	{% endfor %}
 {% endif %}
 

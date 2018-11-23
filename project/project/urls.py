@@ -12,7 +12,7 @@ urlpatterns = [
 
     url(r'admin/', admin.site.urls),
     url(r'^usuario/$', my_views.CadastroUsuario.as_view(), name='usuario'),
-    url(r'^usuario/(?P<user_id>\w+)', my_views.CadastroUsuario.as_view(), name='update_usuario'),
+    url(r'^editar/(?P<user_id>\w+)/$', my_views.CadastroUsuario.as_view(), name='update_usuario'),
     url(r'^perfil/$', my_views.perfilUsuario, name='perfil_usuario'),
 
     url(r'^entrar/$', auth_views.LoginView.as_view(
@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'^lista_estabelecimento/$', my_views.listaEstabelecimentos,
         name='listaEstabelecimentos'),
 
-    url(r'^lista_estabelecimento/(?P<nomeEstabelecimento>\w+)$', my_views.listaProdutos, name='listaProdutos'),
+    url(r'^lista_estabelecimento/(?P<nomeEstabelecimento>\w+)/$', my_views.listaProdutos, name='listaProdutos'),
 ]

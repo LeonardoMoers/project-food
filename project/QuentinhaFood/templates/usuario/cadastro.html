@@ -13,6 +13,7 @@
     {% if editar == True %}
         <input type="hidden" name="user_id" value="{{user_id}}">
         <input type="submit" value="Salvar">
+        <a href="{% url 'perfil_usuario' %}">Voltar</a>
     {% else %}
         <input type="submit" value="Cadastrar">
     {% endif %}

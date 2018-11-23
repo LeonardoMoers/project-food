@@ -2,7 +2,6 @@ from django.db import models
 from .subCategoria import SubCategoria
 from .estabelecimento import Estabelecimento
 from .categoria import Categoria
-from .subCategoria import SubCategoria
 
 class Produto(models.Model):
     categoria_idCategoria=models.ForeignKey(Categoria, on_delete=models.CASCADE)
