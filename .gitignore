@@ -6,6 +6,17 @@ __pycache__/
 # C extensions
 *.so
 
+#migrations
+00*_*
+
+# JPEG
+*.jpg
+*.jpeg
+*.jpe
+*.jif
+*.jfif
+*.jfi
+
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
