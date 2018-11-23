@@ -6,12 +6,12 @@ from ..models.estabelecimento import Estabelecimento
 
 @login_required
 def perfilUsuario(request):
-    template_path = "usuario/perfil_usuario.html"
+    template_name = "usuario/perfil_usuario.html"
     usuario = Usuario.objetos.get(username=request.user)
     estabelecimento = Estabelecimento.objetos.get(nome_usuario=usuario)
-    if not (estabelecimento is None):
+   
+    if (estabelecimento):
     	context_dict = {'usuario': usuario , 'estabelecimento': estabelecimento}
     else:
     	context_dict = {'usuario': usuario}
-    print(context_dict)
-    return render(request, template_path, context_dict)
+    return render(request, template_name, context_dict)

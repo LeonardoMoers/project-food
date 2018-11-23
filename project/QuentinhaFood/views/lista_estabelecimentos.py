@@ -4,7 +4,9 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def listaEstabelecimentos(request):
-    template_path = "estabelecimento/lista_estabelecimentos.html"
+   
+    template_name = "estabelecimento/lista_estabelecimentos.html"
     estabelecimentos_list = Estabelecimento.objetos.all()
     context_dict = {'estabelecimentos': estabelecimentos_list}
-    return render(request, template_path, context_dict)
+
+    return render(request, template_name, context_dict)

@@ -35,9 +35,11 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError(
                 "password and confirm_password does not match"
             )
-    
+
 class UpdateUser(forms.ModelForm):
     class Meta:
         model = Usuario
-        fields = ('username', 'email', 'first_name', 'cpf', 'telefone_usuario', 
-        'telefoneAlternativo_usuario', 'imagem_usuario')
+        exclude = (
+            'last_name','last_login', "groups", "user_permissions", "helptext", "is_staff", "date_joined", 'is_active',
+            'is_superuser',
+            'username', 'password', 'confirmar_password', 'cpf')

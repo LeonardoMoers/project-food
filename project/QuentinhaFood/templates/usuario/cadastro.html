@@ -12,6 +12,7 @@
 </div>
 <div class="row">
     <div class="col s12">
+        <!-- <p>{{msg}}</p> Mensagem de sucesso ou fracasso -->
         <form action="{% url 'usuario' %}" method="post" name="formUsuario" id="formUsuario" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="input-field col s6">
@@ -64,9 +65,17 @@
                     <input class="file-path" type="text">
                 </div>
             </div>
+            {% if editar == True %}
+            <input type="hidden" name="user_id" value="{{user_id}}">
+            <div class="col s6 right-align">
+                <a href="{% url 'perfil_usuario' %}">Voltar</a>
+                <a class="btn waves-effect waves-light grey darken-1" id="cadastrar" v-on:click="validaCampos">Cadastrar</a>
+            </div>
+            {% else %}
             <div class="col s6 right-align">
                 <a class="btn waves-effect waves-light grey darken-1" id="cadastrar" v-on:click="validaCampos">Cadastrar</a>
             </div>
+            {% endif %}
         </form>
     </div>
 </div>
@@ -175,6 +184,13 @@
         },
     })
 </script>
+
+
+{% endblock %}
+
+
+
+
 
 
 {% endblock %}
