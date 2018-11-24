@@ -19,12 +19,14 @@
 </div>
 
 {% if estabelecimento %}
-<h1>{% blocktrans %}Estabelecimento{% endblocktrans %}</h1>
+<h1>{% trans "Estabelecimento" %}</h1>
+    {% for field in estabelecimento %}
 	<div>
-	    <p>{{estabelecimento.razao_social}}</p>
-	    <p>{{estabelecimento.descricao_estabelecimento}}</p>
-	    <p>{{estabelecimento.imagem_estabelecimento}}</p>
-	</div>
+	    <p>{{field.razao_social}}</p>
+	    <p>{{field.descricao_estabelecimento}}</p>
+	    <p>{{field.imagem_estabelecimento}}</p>
+    </div>
+    {% endfor %}
 {% endif %}
 
 {% endblock %}
