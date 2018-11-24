@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block titulo %} Cadastro de Usuário{% endblock %}
 {% block conteudo %}
 
@@ -20,7 +20,7 @@
     <input type="submit" value="Entrar">
 </form>
 
-<a href="{% url 'usuario' %}">Cadastre-se</a>
+<a href="{% url 'usuario' %}">{% blocktrans %}Cadastre-se{% endblocktrans %}</a>
 
 
 {% endblock %}

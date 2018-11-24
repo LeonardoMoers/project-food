@@ -4,6 +4,7 @@ from ..forms.usuario import UserForm, UpdateUser
 from ..models.usuario import Usuario
 from django.contrib.auth import authenticate, login
 from django.views.generic.base import View
+from django.utils.translation import gettext_lazy as _
 
 
 class CadastroUsuario(View):
@@ -36,10 +37,10 @@ class CadastroUsuario(View):
                         user.imagem_usuario = request.FILES['imagem_usuario']
                         user.save()
                     
-                    msg = "Seus dados foram atualizados!"
+                    msg = _("Seus dados foram atualizados!")
                     return render(request, self.template_name, {'form': form, 'msg': msg, 'editar': editar})
                 else:
-                    msg = 'Ocorreu um erro!'
+                    msg = _('Ocorreu um erro!')
                     return render(request, self.template_name, {'form': form, 'msg': msg, 'editar': editar})
             except:
                 form = UserForm(request.POST, request.FILES)
@@ -55,5 +56,5 @@ class CadastroUsuario(View):
                     return HttpResponseRedirect('/lista_estabelecimento/')
                 else:
                     form = UserForm()
-                    msg = 'Ocorreu um erro!'
+                    msg = _('Ocorreu um erro!')
                     return render(request, self.template_name, {'form': form, 'msg': msg})
