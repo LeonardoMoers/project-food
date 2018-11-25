@@ -38,6 +38,14 @@ class UserForm(forms.ModelForm):
             )
 
 class UpdateUser(forms.ModelForm):
+    # email = forms.CharField(widget=forms.EmailInput(
+    #     attrs={'class': 'validate', 'id': 'email', 'v-model': 'email'}))
+    # first_name = forms.CharField(widget=forms.TextInput(
+    #     attrs={'class': 'validate', 'id': 'first_name', 'v-model': 'first_name'}))
+    # telefone_usuario = forms.CharField(widget=forms.TextInput(
+    #     attrs={'class': 'validate', 'id': 'telefone_usuario', 'v-model': 'telefone_usuario', 'v-mask': '["####-####"]'}))
+    # telefoneAlternativo_usuario = forms.CharField(required=False,
+    #     widget=forms.TextInput(attrs={'id': 'telefoneAlternativo_usuario', 'v-model': 'telefoneAlternativo_usuario', 'v-mask': '["####-####"]'}))
     class Meta:
         model = Usuario
         exclude = (
