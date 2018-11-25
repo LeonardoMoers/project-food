@@ -1,5 +1,6 @@
 from django import forms
 from ..models import Usuario
+from django.utils.translation import gettext_lazy as _
 
 
 class UserForm(forms.ModelForm):
@@ -33,7 +34,7 @@ class UserForm(forms.ModelForm):
         confirmar_password = cleaned_data.get("confirmar_password")
         if password != confirmar_password:
             raise forms.ValidationError(
-                "password and confirm_password does not match"
+                _("Senha e confirmação não coincidem")
             )
 
 class UpdateUser(forms.ModelForm):

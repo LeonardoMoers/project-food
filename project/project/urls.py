@@ -1,14 +1,21 @@
 from django.contrib import admin
 from django.urls import path
 
+from django.urls import reverse
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import activate
 
 from QuentinhaFood import views as my_views
 
-urlpatterns = [
+# python manage.py makemigrations
+
+# python manage.py migrate --run-syncdb
+
+urlpatterns = i18n_patterns(
     url(r'^$', my_views.listaEstabelecimentos, name='index'),
     url(r'admin/', admin.site.urls),
     url(r'^usuario/$', my_views.CadastroUsuario.as_view(), name='usuario'),
@@ -31,4 +38,4 @@ urlpatterns = [
         name='listaEstabelecimentos'),
 
     url(r'^lista_estabelecimento/(?P<nomeEstabelecimento>\w+)/$', my_views.listaProdutos, name='listaProdutos'),
-]
+)

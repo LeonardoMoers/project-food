@@ -8,7 +8,7 @@ class Estabelecimento(models.Model):
 	def validate_phone(self):
 		if len(self) < 8 or len(self) > 11:
 			raise ValidationError(
-				_('%(value)s is not valid, please follow example: (xx) 9 XXXX-XXXX or XXXX-XXXX'),
+				_('%(value)s não é válido, ppor favor siga o exemplo: (xx) 9 XXXX-XXXX or XXXX-XXXX'),
 				params={'value': self}
 			)
 

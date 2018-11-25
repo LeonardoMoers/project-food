@@ -14,8 +14,11 @@
     <div class="col s12">
         <!-- Mensagem de sucesso ou fracasso -->
         <p>{{msg}}</p> 
-        <form action="{% url 'usuario' %}" method="post" name="formUsuario" id="formUsuario" enctype="multipart/form-data">
-            {% csrf_token %}
+        {% if editar == True %}
+        <form action="{% url 'update_usuario' user_id %}" method="post" name="formUsuario" id="formUsuario" enctype="multipart/form-data">{% csrf_token %}
+        {% else %}
+        <form action="{% url 'usuario' %}" method="post" name="formUsuario" id="formUsuario" enctype="multipart/form-data">{% csrf_token %}
+        {% endif %}
             <div class="input-field col s6">
                 <label for="username">Nome de usuario:</label>
                 {{form.username}}
