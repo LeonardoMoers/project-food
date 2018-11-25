@@ -11,44 +11,50 @@
     </div>
 </div>
 <div class="row">
-    <div class="col s12">
-        <!-- Mensagem de sucesso ou fracasso -->
-        <p>{{msg}}</p> 
+    <div class="col s12"> 
         {% if editar == True %}
         <form action="{% url 'update_usuario' user_id %}" method="post" name="formUsuario" id="formUsuario" enctype="multipart/form-data">{% csrf_token %}
         {% else %}
         <form action="{% url 'usuario' %}" method="post" name="formUsuario" id="formUsuario" enctype="multipart/form-data">{% csrf_token %}
         {% endif %}
+            {% if editar == False %}
             <div class="input-field col s6">
                 <label for="username">Nome de usuario:</label>
                 {{form.username}}
                 <span class="helper-text" v-bind:data-error="wrongUsername"></span>
             </div>
+            {% endif %}
             <div class="input-field col s6">
                 <label for="email">Email:</label>
                 {{form.email}}
                 <span class="helper-text" v-bind:data-error="wrongEmail"></span>
             </div>
+            {% if editar == False %}
             <div class="input-field col s6">
                 <label for="password">Senha:</label>
                 {{form.password}}
                 <span class="helper-text" v-bind:data-error="wrongPassword"></span>
             </div>
+            {% endif %}
+            {% if editar == False %}
             <div class="input-field col s6">
                 <label for="confirmar_password">Confirmar senha:</label>
                 {{form.confirmar_password}}
                 <span class="helper-text" v-bind:data-error="wrongConfPassword"></span>
             </div>
+            {% endif %}
             <div class="input-field col s6">
                 <label for="first_name">Nome completo:</label>
                 {{form.first_name}}
                 <span class="helper-text" v-bind:data-error="wrongName"></span>
             </div>
+            {% if editar == False %}
             <div class="input-field col s6">
                 <label for="cpf">cpf:</label>
                 {{form.cpf}}
                 <span class="helper-text" v-bind:data-error="wrongCpf"></span>
             </div>
+            {% endif %}
             <div class="input-field col s6">
                 <label for="telefone_usuario">Telefone:</label>
                 {{form.telefone_usuario}}
@@ -71,9 +77,8 @@
             </div>
             {% if editar == True %}
             <input type="hidden" name="user_id" value="{{user_id}}">
-            <div class="col s6 right-align">
-                <a href="{% url 'perfil_usuario' %}">Voltar</a>
-                <a class="btn waves-effect waves-light grey darken-1" id="cadastrar" v-on:click="validaCampos">Cadastrar</a>
+            <div class="col s6 center-align salvar">
+                <a class="btn waves-effect waves-light grey darken-1" id="cadastrar" v-on:click="validaCampos">Salvar</a>
             </div>
             {% else %}
             <div class="col s6 right-align">
@@ -89,6 +94,7 @@
         delimiters: ['[[', ']]'],
         el: '#formUsuario',
         data: {
+            editar: '{{editar}}',
             username: '',
             email: '',
             password: '',
@@ -106,58 +112,62 @@
             wrongPhone: '',
             wrongOtherPhone: '',
             wrongFile: '',
+            msg: '{{msg}}',
         },
         methods: {
             validaCampos: function () {
-                if (this.username.length < 3 || this.username.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ. ]+$/) == null) {
-                    document.getElementById("username").focus();
-                    this.wrongUsername = 'Username só pode conter letras e no minimo 3 caracteres';
-                    document.getElementById("username").classList.add("invalid");
-                    return 0;
-                }
-                if (!this.validaEmail()) {
-                    document.getElementById("email").focus();
-                    this.wrongEmail = 'Email Invalido';
-                    document.getElementById("email").classList.add("invalid");
-                    return 0;
-                }
-                if (!this.validaPassword()) {
-                    document.getElementById("password").focus();
-                    this.wrongPassword = 'Senha deve conter + de 5 digitos, uma letra maiuscula, um numero e um caractere especial';
-                    document.getElementById("password").classList.add("invalid");
-                    return 0;
-                }
-                if (this.password != this.confirmar_password) {
-                    document.getElementById("confirmar_password").focus();
-                    this.wrongConfPassword = 'As senhas não coincidem';
-                    document.getElementById("confirmar_password").classList.add("invalid");
-                    return 0;
-                }
-                if (this.first_name.length < 3 || this.first_name.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/) == null) {
-                    document.getElementById("first_name").focus();
-                    this.wrongName = 'Nome Invalido';
-                    document.getElementById("first_name").classList.add("invalid");
-                    return 0;
-                }
-                if (this.cpf < 11) {
-                    document.getElementById("cpf").focus();
-                    this.wrongCpf = 'Cep invalido';
-                    document.getElementById("cpf").classList.add("invalid");
-                    return 0;
-                }
-                if (this.telefone_usuario < 10) {
-                    document.getElementById("telefone_usuario").focus();
-                    this.wrongPhone = 'Telefone invalido';
-                    document.getElementById("telefone_usuario").classList.add("invalid");
-                    return 0;
-                }
-                if (this.telefoneAlternativo_usuario !='' && this.telefoneAlternativo_usuario < 10) {
-                    document.getElementById("telefoneAlternativo_usuario").focus();
-                    this.wrongOtherPhone = 'Telefone Alternativo invalido';
-                    document.getElementById("telefoneAlternativo_usuario").classList.add("invalid");
-                    return 0;
-                }
+                if (this.editar != 'True') {
 
+                    if (this.editar == 'False' && (this.username.length < 3 || this.username.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ. ]+$/) == null)) {
+                        document.getElementById("username").focus();
+                        this.wrongUsername = 'Username só pode conter letras e no minimo 3 caracteres';
+                        document.getElementById("username").classList.add("invalid");
+                        return 0;
+                    }
+                    if (!this.validaEmail()) {
+                        document.getElementById("email").focus();
+                        this.wrongEmail = 'Email Invalido';
+                        document.getElementById("email").classList.add("invalid");
+                        return 0;
+                    }
+                    if (this.editar == 'False' && !this.validaPassword()) {
+                        document.getElementById("password").focus();
+                        this.wrongPassword = 'Senha deve conter + de 5 digitos, uma letra maiuscula, um numero e um caractere especial';
+                        document.getElementById("password").classList.add("invalid");
+                        return 0;
+                    }
+                    if (this.editar == 'False' && this.password != this.confirmar_password) {
+                        document.getElementById("confirmar_password").focus();
+                        this.wrongConfPassword = 'As senhas não coincidem';
+                        document.getElementById("confirmar_password").classList.add("invalid");
+                        return 0;
+                    }
+                    if (this.first_name.length < 3 || this.first_name.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/) == null) {
+                        document.getElementById("first_name").focus();
+                        this.wrongName = 'Nome Invalido';
+                        document.getElementById("first_name").classList.add("invalid");
+                        return 0;
+                    }
+                    if (this.editar == 'False' && this.cpf < 11) {
+                        document.getElementById("cpf").focus();
+                        this.wrongCpf = 'Cep invalido';
+                        document.getElementById("cpf").classList.add("invalid");
+                        return 0;
+                    }
+                    if (this.telefone_usuario < 10) {
+                        document.getElementById("telefone_usuario").focus();
+                        this.wrongPhone = 'Telefone invalido';
+                        document.getElementById("telefone_usuario").classList.add("invalid");
+                        return 0;
+                    }
+                    if (this.telefoneAlternativo_usuario !='' && this.telefoneAlternativo_usuario < 10) {
+                        document.getElementById("telefoneAlternativo_usuario").focus();
+                        this.wrongOtherPhone = 'Telefone Alternativo invalido';
+                        document.getElementById("telefoneAlternativo_usuario").classList.add("invalid");
+                        return 0;
+                    }
+
+                }
                 document.formUsuario.submit();
             },
             validaEmail: function () {
@@ -192,6 +202,10 @@
             },
         },
         mounted: function () {
+            if (this.msg != '') {
+                M.toast({ html: this.msg });
+            }
+
             document.formUsuario.addEventListener("keyup", function (event) {
                 event.preventDefault();
                 if (event.keyCode === 13) {
