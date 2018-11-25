@@ -5,18 +5,20 @@
 
 <p>{{msg}}</p> <!-- Mensagem de sucesso ou fracasso -->
 
-<form action="{% url 'usuario' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
-    
-    
+{% if editar == True %}
+    <form action="{% url 'update_usuario' user_id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+{% else %}
+    <form action="{% url 'usuario' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+{% endif %}
+
     {{form.as_p}}
 
-    {% if editar == True %}
-        <input type="hidden" name="user_id" value="{{user_id}}">
-        <input type="submit" value="Salvar">
-        <a href="{% url 'perfil_usuario' %}">Voltar</a>
-    {% else %}
-        <input type="submit" value="Cadastrar">
-    {% endif %}
+{% if editar == True %}
+    <input type="submit" value="Salvar">
+    <a href="{% url 'perfil_usuario' %}">Voltar</a>
+{% else %}
+    <input type="submit" value="Cadastrar">
+{% endif %}
     
     
 </form>
