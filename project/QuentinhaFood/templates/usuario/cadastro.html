@@ -12,7 +12,8 @@
 </div>
 <div class="row">
     <div class="col s12">
-        <!-- <p>{{msg}}</p> Mensagem de sucesso ou fracasso -->
+        <!-- Mensagem de sucesso ou fracasso -->
+        <p>{{msg}}</p> 
         <form action="{% url 'usuario' %}" method="post" name="formUsuario" id="formUsuario" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="input-field col s6">
@@ -92,7 +93,7 @@
             first_name: null,
             cpf: null,
             telefone_usuario: null,
-            telefoneAlternativo_usuario: null,
+            telefoneAlternativo_usuario: '',
             wrongUsername: '',
             wrongEmail: '',
             wrongPassword: '',
@@ -105,7 +106,7 @@
         },
         methods: {
             validaCampos: function () {
-                if (this.username.length < 3 || this.username.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/) == null) {
+                if (this.username.length < 3 || this.username.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ. ]+$/) == null) {
                     document.getElementById("username").focus();
                     this.wrongUsername = 'Username só pode conter letras e no minimo 3 caracteres';
                     document.getElementById("username").classList.add("invalid");
@@ -135,6 +136,25 @@
                     document.getElementById("first_name").classList.add("invalid");
                     return 0;
                 }
+                if (this.cpf < 11) {
+                    document.getElementById("cpf").focus();
+                    this.wrongCpf = 'Cep invalido';
+                    document.getElementById("cpf").classList.add("invalid");
+                    return 0;
+                }
+                if (this.telefone_usuario < 10) {
+                    document.getElementById("telefone_usuario").focus();
+                    this.wrongPhone = 'Telefone invalido';
+                    document.getElementById("telefone_usuario").classList.add("invalid");
+                    return 0;
+                }
+                if (this.telefoneAlternativo_usuario !='' && this.telefoneAlternativo_usuario < 10) {
+                    document.getElementById("telefoneAlternativo_usuario").focus();
+                    this.wrongOtherPhone = 'Telefone Alternativo invalido';
+                    document.getElementById("telefoneAlternativo_usuario").classList.add("invalid");
+                    return 0;
+                }
+
                 document.formUsuario.submit();
             },
             validaEmail: function () {
@@ -167,14 +187,8 @@
                 }
                 return false;
             },
-            mascarasImputs: function () {
-                // $('#cpf').mask("(99) 99999-9999");
-                // $('#telefone_usuario').mask("(99) 99999-9999");
-                // $('#telefoneAlternativo_usuario').mask("(99) 99999-9999");
-            }
         },
         mounted: function () {
-            this.mascarasImputs();
             document.formUsuario.addEventListener("keyup", function (event) {
                 event.preventDefault();
                 if (event.keyCode === 13) {

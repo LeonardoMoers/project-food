@@ -14,11 +14,11 @@ class UserForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'validate', 'id': 'first_name', 'v-model': 'first_name'}))
     cpf = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'validate', 'id': 'cpf', 'v-model': 'cpf'}))
+        attrs={'class': 'validate', 'id': 'cpf', 'v-model': 'cpf', 'v-mask': '["###########"]' })) 
     telefone_usuario = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'validate', 'id': 'telefone_usuario', 'v-model': 'telefone_usuario'}))
+        attrs={'class': 'validate', 'id': 'telefone_usuario', 'v-model': 'telefone_usuario', 'v-mask': '["####-####"]'}))
     telefoneAlternativo_usuario = forms.CharField(required=False,
-        widget=forms.TextInput(attrs={'id': 'telefoneAlternativo_usuario', 'v-model': 'telefoneAlternativo_usuario'}))
+        widget=forms.TextInput(attrs={'id': 'telefoneAlternativo_usuario', 'v-model': 'telefoneAlternativo_usuario', 'v-mask': '["####-####"]'}))
     # imagem_usuario = forms.CharField(
     #     attrs={'class': 'validate', 'id': 'imagem_usuario'})
 
