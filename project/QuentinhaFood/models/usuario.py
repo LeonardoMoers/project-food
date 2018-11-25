@@ -6,14 +6,14 @@ from django.utils.translation import ugettext_lazy as _
 def validate_cpf(value):
 	if len(value) != 11:
 		raise ValidationError(
-			_('%(value)s is not valid'),
+			_('%(value)s não é válido'),
 			params={'value': value}
 		)
 
 def validate_phone(value):
 	if len(value) < 8 or len(value) > 11:
 		raise ValidationError(
-			_('%(value)s is not valid, please follow example: (xx) 9 XXXX-XXXX or XXXX-XXXX'),
+			_('%(value)s não é válido, ppor favor siga o exemplo: (xx) 9 XXXX-XXXX or XXXX-XXXX'),
 			params={'value': value}
 		)
 

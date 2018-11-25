@@ -9,7 +9,7 @@ def perfilUsuario(request):
     template_name = "usuario/perfil_usuario.html"
     usuario = Usuario.objetos.get(username=request.user)
     estabelecimento = Estabelecimento.objetos.filter(nome_usuario=usuario).values()
-   
+    print(estabelecimento)
     if (estabelecimento):
     	context_dict = {'usuario': usuario , 'estabelecimento': estabelecimento}
     else:

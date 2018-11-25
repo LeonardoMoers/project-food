@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +10,9 @@
 </head>
     <body>
         {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">Sair</a>
+            <a href="{% url 'logout' %}">{% blocktrans %}Sair{% endblocktrans %}</a>
         {% else %}
-            <a href="{% url 'login' %}">Entrar</a>
+            <a href="{% url 'login' %}">{% blocktrans %}Entrar{% endblocktrans %}</a>
         {% endif %}
 
         {% block conteudo %}     

@@ -4,6 +4,7 @@ from ..forms.usuario import UserForm, UpdateUser
 from ..models.usuario import Usuario
 from django.contrib.auth import authenticate, login
 from django.views.generic.base import View
+from django.utils.translation import gettext_lazy as _
 
 
 class CadastroUsuario(View):
