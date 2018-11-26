@@ -49,3 +49,7 @@ main {
 .salvar {
     margin-top: 30px; 
 }
+
+.listaEstabelecimentoImg {
+    max-width: 50px;
+}

@@ -3,10 +3,47 @@
 {% block titulo %} Cadastro de Usuário{% endblock %}
 {% block conteudo %}
 
-<form action="{% url 'cadastroProduto' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Cadastrar!">
-</form>
+<div class="row">
+    <div class="col s12">
+        <h3>Cadastro Produto</h3>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <form action="{% url 'cadastroProduto' %}" method="post" name="formProduto" id="formProduto" enctype="multipart/form-data">
+            {% csrf_token %}
 
+            {{form.as_p}}
+
+            <div class="input-field col s6">
+                <label for="username">Nome de usuario:</label>
+                {{form.username}}
+                <span class="helper-text" v-bind:data-error="wrongUsername"></span>
+            </div>
+
+            <div class="file-field input-field col s6">
+                <div class="btn waves-effect waves-light grey darken-1">
+                    <span>Foto</span>
+                    {{form.imagem_produto}}
+                    <span class="helper-text" v-bind:data-error="wrongFile"></span>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path" type="text">
+                </div>
+            </div>
+
+            <div class="col s6 right-align">
+                <a class="btn waves-effect waves-light grey darken-1" id="cadastrar" v-on:click="validaCampos">Cadastrar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+</script>
 {% endblock %}

@@ -14,17 +14,19 @@
         <table class="highlight">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Estabelecimento</th>
-                    <th>Dono</th>
+                    <th>Descrição</th>
                     <th>Ver</th>
                 </tr>
             </thead>
             <tbody>
                 {% for field in estabelecimentos %}
                 <tr>
+                    <td><img src="{{MEDIA_URL}}{{field.imagem_estabelecimento}}" alt="" class="circle listaEstabelecimentoImg"></td>
                     <td>{{field.razao_social}}</td>
-                    <td>{{field.nome_usuario}}</td>
-                    <td> - </td>
+                    <td>{{field.descricao_estabelecimento}}</td>
+                    <td><a href="{% url 'listaProdutos' field.razao_social %}"><i class="material-icons">send</i></a></td>
                 </tr>
                 {% endfor %}
             </tbody>
