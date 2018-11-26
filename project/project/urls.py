@@ -8,6 +8,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import activate
+from django.conf.urls.static import static
 
 from QuentinhaFood import views as my_views
 
@@ -16,6 +17,7 @@ from QuentinhaFood import views as my_views
 # python manage.py migrate --run-syncdb
 
 urlpatterns = i18n_patterns(
+    url(r'^$', my_views.listaEstabelecimentos, name='index'),
     url(r'admin/', admin.site.urls),
     url(r'^usuario/$', my_views.CadastroUsuario.as_view(), name='usuario'),
     url(r'^editar/(?P<user_id>\w+)/$', my_views.CadastroUsuario.as_view(), name='update_usuario'),
@@ -36,5 +38,5 @@ urlpatterns = i18n_patterns(
     url(r'^lista_estabelecimento/$', my_views.listaEstabelecimentos,
         name='listaEstabelecimentos'),
 
-    url(r'^lista_estabelecimento/(?P<nomeEstabelecimento>\w+)/$', my_views.listaProdutos, name='listaProdutos'),
-)
+    url(r'^lista_estabelecimento/(?P<pk>\w+)/$', my_views.listaProdutos, name='listaProdutos'),
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

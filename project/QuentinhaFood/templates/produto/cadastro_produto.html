@@ -3,10 +3,94 @@
 {% block titulo %} Cadastro de Usuário{% endblock %}
 {% block conteudo %}
 
-<form action="{% url 'cadastroProduto' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Cadastrar!">
-</form>
+<div class="row">
+    <div class="col s12">
+        <h3>Cadastro Produto</h3>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <form action="{% url 'cadastroProduto' %}" method="post" name="formProduto" id="formProduto" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="input-field col s6">
+                {{form.categoria_idCategoria}}
+                <span class="helper-text" v-bind:data-error="wrong"></span>
+            </div>
+            <div class="input-field col s6">
+                {{form.subCategoria_idsubCategoria}}
+                <span class="helper-text" v-bind:data-error="wrong"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="nome_produto">Nome:</label>
+                {{form.nome_produto}}
+                <span class="helper-text" v-bind:data-error="wrongName"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="descricao_produto">Descrição:</label>
+                {{form.descricao_produto}}
+                <span class="helper-text" v-bind:data-error="wrong"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="adicionais_produto">Adcionais:</label>
+                {{form.adicionais_produto}}
+                <span class="helper-text" v-bind:data-error="wrong"></span>
+            </div>
+
+            <div class="file-field input-field col s6">
+                <div class="btn waves-effect waves-light grey darken-1">
+                    <span>Foto</span>
+                    {{form.imagem_produto}}
+                    <span class="helper-text" v-bind:data-error="wrong"></span>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path" type="text">
+                </div>
+            </div>
+
+            <div class="col s6 right-align">
+                <a class="btn waves-effect waves-light grey darken-1" id="cadastrar" v-on:click="validaCampos">Cadastrar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#formProduto',
+        data: {
+            nome_produto: '',
+            descricao_produto: '',
+            adicionais_produto: '',
+            wrongName: '',
+            wrong: '',
+        },
+        methods: {
+            validaCampos: function () {
+                if (this.nome_produto.length < 3 || this.nome_produto.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ. ]+$/) == null) {
+                    document.getElementById("nome_produto").focus();
+                    this.wrongName = 'Nome invalido';
+                    document.getElementById("nome_produto").classList.add("invalid");
+                    return 0;
+                }
+                document.formProduto.submit();
+            },
+        },
+        mounted: function () {
+            document.formProduto.addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("cadastrar").click();
+                }
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+                var elems = document.querySelectorAll('select');
+                var instances = M.FormSelect.init(elems);
+            });
+        },
+    })
+</script>
 
 {% endblock %}

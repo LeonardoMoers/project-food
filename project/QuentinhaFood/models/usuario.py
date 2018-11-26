@@ -9,6 +9,8 @@ def validate_cpf(value):
 			_('%(value)s não é válido'),
 			params={'value': value}
 		)
+	return True
+	
 
 def validate_phone(value):
 	if len(value) < 8 or len(value) > 11:
@@ -16,6 +18,7 @@ def validate_phone(value):
 			_('%(value)s não é válido, ppor favor siga o exemplo: (xx) 9 XXXX-XXXX or XXXX-XXXX'),
 			params={'value': value}
 		)
+	return True
 
 class Usuario(User):
 	cpf = models.CharField(max_length=100 ,validators=[validate_cpf])

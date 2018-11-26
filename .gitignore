@@ -8,6 +8,9 @@ __pycache__/
 # C extensions
 *.so
 
+#yarn
+project/static/node_modules
+
 #migrations
 00*_*
 

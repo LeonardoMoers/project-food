@@ -1,21 +1,64 @@
 {% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     {% load staticfiles %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{% static 'node_modules/materialize-css/dist/css/materialize.min.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="{% static 'node_modules/materialize-css/dist/js/materialize.min.js' %}"></script>
+    <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'node_modules/vue/dist/vue.min.js' %}"></script>
+    <script src="{% static 'node_modules/vue-the-mask/dist/vue-the-mask.js' %}"></script>
+
+
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <script src="{% static 'js/main.js' %}"></script>
+
     <title>{% block titulo %}{% endblock %}</title>
 </head>
-    <body>
-        {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">{% blocktrans %}Sair{% endblocktrans %}</a>
-        {% else %}
-            <a href="{% url 'login' %}">{% blocktrans %}Entrar{% endblocktrans %}</a>
-        {% endif %}
 
-        {% block conteudo %}     
-        {% endblock %} 
-    </body>
+<body>
+    <nav>
+        <div class="nav-wrapper deep-orange darken-2">
+            <a href="{% url 'index' %}" class="brand-logo right">Quentinha Food</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="{% url 'listaEstabelecimentos' %}">Estabelecimentos</a></li>
+                {% if user.is_authenticated %}
+                    {% if request.user.groups.all.0.name == 'fornecedor' %}
+                        <li><a href="{% url 'cadastroProduto' %}">Cadastrar Produto</a></li>
+                    {% else %}
+                        <li><a href="{% url 'cadastroEstabelecimento' %}">Cadastre seu restaurante</a></li>
+                    {% endif %}
+                <li><a href="{% url 'perfil_usuario' %}">Perfil</a></li>
+                <li><a href="{% url 'logout' %}">{% blocktrans %}Sair{% endblocktrans %}</a></li>
+                {% else %}
+                <li><a href="{% url 'usuario' %}">Cadastrar-se</a></li>
+                <li><a href="{% url 'login' %}">{% blocktrans %}Entrar{% endblocktrans %}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="row">
+            <div class="col s9 offset-s1">
+                <div class="card-panel hoverable card-principal">
+                    {% block conteudo %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="page-footer deep-orange darken-2">
+        <div class="footer-copyright deep-orange darken-2">
+            <div class="container">
+                © 2018 QuentinhaFood
+            </div>
+        </div>
+    </footer>
+</body>
+
 </html>
