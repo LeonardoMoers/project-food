@@ -27,8 +27,11 @@
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href="{% url 'listaEstabelecimentos' %}">Estabelecimentos</a></li>
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'cadastroProduto' %}">Cadastrar Produto</a></li>
-                <li><a href="{% url 'cadastroEstabelecimento' %}">Cadastre seu restaurante</a></li>
+                    {% if request.user.groups.all.0.name == 'fornecedor' %}
+                        <li><a href="{% url 'cadastroProduto' %}">Cadastrar Produto</a></li>
+                    {% else %}
+                        <li><a href="{% url 'cadastroEstabelecimento' %}">Cadastre seu restaurante</a></li>
+                    {% endif %}
                 <li><a href="{% url 'perfil_usuario' %}">Perfil</a></li>
                 <li><a href="{% url 'logout' %}">{% blocktrans %}Sair{% endblocktrans %}</a></li>
                 {% else %}
