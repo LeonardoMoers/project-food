@@ -1,0 +1,26 @@
+[{
+	"model": "QuentinhaFood.Categoria",
+	"fields": {
+	"categoria_produto": "Bebidas"
+  }},
+{
+	"model": "QuentinhaFood.Categoria",
+	"fields": {
+	"categoria_produto": "Pratos Quentes"
+   }},
+{
+	"model": "QuentinhaFood.Categoria",
+	"fields": {
+	"categoria_produto": "Lanches"
+   }},
+{
+	"model": "QuentinhaFood.Categoria",
+	"fields": {
+	"categoria_produto": "Pizzas"
+	}},
+{
+	"model": "QuentinhaFood.Categoria",
+	"fields": {
+	"categoria_produto": "Pratos frios"
+	}}
+]
