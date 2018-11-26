@@ -26,7 +26,7 @@
                     <td><img src="{{MEDIA_URL}}{{field.imagem_estabelecimento}}" alt="" class="circle listaEstabelecimentoImg"></td>
                     <td>{{field.razao_social}}</td>
                     <td>{{field.descricao_estabelecimento}}</td>
-                    <td><a href="{% url 'listaProdutos' field.razao_social %}"><i class="material-icons">send</i></a></td>
+                    <td><a href="{% url 'listaProdutos' field.pk %}"><i class="material-icons">send</i></a></td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -38,5 +38,5 @@ urlpatterns = i18n_patterns(
     url(r'^lista_estabelecimento/$', my_views.listaEstabelecimentos,
         name='listaEstabelecimentos'),
 
-    url(r'^lista_estabelecimento/(?P<nomeEstabelecimento>\w+)/$', my_views.listaProdutos, name='listaProdutos'),
+    url(r'^lista_estabelecimento/(?P<pk>\w+)/$', my_views.listaProdutos, name='listaProdutos'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
