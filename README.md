@@ -9,3 +9,8 @@ Usar `yarn --modules-folder ./project/static/node_modules` para instalar
 
 Usar `manage.py loaddata category.json` primeiro.
 Usar `manage.py loaddata subCategory.json` segundo.
+
+#Locale
+
+Usar `manage.py compilemessages`
+
