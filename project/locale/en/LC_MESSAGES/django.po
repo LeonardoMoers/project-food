@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-24 18:12-0200\n"
+"POT-Creation-Date: 2018-11-29 11:05-0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: .\QuentinhaFood\forms\usuario.py:37
+msgid "Senha e confirmação não coincidem"
+msgstr "Password and confirm password not match"
+
 #: .\QuentinhaFood\models\estabelecimento.py:11
-#: .\QuentinhaFood\models\usuario.py:16
+#: .\QuentinhaFood\models\usuario.py:18
 #, python-format
-msgid "%(value)s não é válido, ppor favor siga o exemplo: (xx) 9 XXXX-XXXX or XXXX-XXXX"
+msgid "%(value)s não é válido, por favor siga o exemplo: (xx) 9 XXXX-XXXX or XXXX-XXXX"
 msgstr "%(value)s is not valid, please follow example: (xx) 9 XXXX-XXXX or XXXX-XXXX"
 
 #: .\QuentinhaFood\models\usuario.py:9
@@ -29,13 +33,21 @@ msgstr "%(value)s is not valid, please follow example: (xx) 9 XXXX-XXXX or XXXX-
 msgid "%(value)s não é válido"
 msgstr "%(value)s is not valid"
 
-#: .\QuentinhaFood\views\usuario.py:40
-msgid "Seus dados foram atualizados!"
-msgstr "Your data has been updated!"
+#: .\QuentinhaFood\templates\base.html:37
+msgid "Sair"
+msgstr "Sign out"
 
-#: .\QuentinhaFood\views\usuario.py:43 .\QuentinhaFood\views\usuario.py:59
-msgid "Ocorreu um erro!"
-msgstr "An error has occurred!"
+#: .\QuentinhaFood\templates\base.html:40
+msgid "Entrar"
+msgstr "Sign in"
+
+#: .\QuentinhaFood\templates\usuario\perfil_usuario.html:9
+msgid "Usuário"
+msgstr "User"
+
+#: .\QuentinhaFood\templates\usuario\perfil_usuario.html:36
+msgid "Estabelecimento"
+msgstr "Establishment"
 
 #: .\project\settings.py:22
 msgid "Brazilian (Portuguese)"
@@ -44,3 +56,9 @@ msgstr ""
 #: .\project\settings.py:23
 msgid "English"
 msgstr ""
+
+#~ msgid "Seus dados foram atualizados!"
+#~ msgstr "Your data has been updated!"
+
+#~ msgid "Ocorreu um erro!"
+#~ msgstr "An error has occurred!"
