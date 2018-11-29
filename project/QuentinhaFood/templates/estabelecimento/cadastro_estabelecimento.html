@@ -1,0 +1,174 @@
+{% extends '../base.html' %}
+
+{% block titulo %} Cadastro de Estabelecimento{% endblock %}
+{% block conteudo %}
+
+
+<div class="row">
+    <div class="col s12">
+        <h3>Cadastro de Estabelecimento</h3>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <form action="{% url 'cadastroEstabelecimento' %}" method="post" name="formEstabelecimento" id="formEstabelecimento"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="input-field col s6">
+                <label for="razao_social">Razao Social:</label>
+                {{form.razao_social}}
+                <span class="helper-text" v-bind:data-error="wrongRazao"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="descricao_estabelecimento">Descrição:</label>
+                {{form.descricao_estabelecimento}}
+                <span class="helper-text" v-bind:data-error="wrongDescricao"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="cnpj">CNPJ:</label>
+                {{form.cnpj}}
+                <span class="helper-text" v-bind:data-error="wrongCnpj"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="email_estabelecimento">E-mail:</label>
+                {{form.email_estabelecimento}}
+                <span class="helper-text" v-bind:data-error="wrongEmail"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="telefone_estabelecimento">Telefone:</label>
+                {{form.telefone_estabelecimento}}
+                <span class="helper-text" v-bind:data-error="wrongTelefone"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="telefoneAlternativo_estabelecimento">Telefone Alternativo:</label>
+                {{form.telefoneAlternativo_estabelecimento}}
+                <span class="helper-text" v-bind:data-error="wrongOutroTelefone"></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="site_estabelecimento">Site:</label>
+                {{form.site_estabelecimento}}
+                <span class="helper-text" data-error=""></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="facebook_estabelecimento">Facebook:</label>
+                {{form.facebook_estabelecimento}}
+                <span class="helper-text" data-error=""></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="twitter_estabelecimento">Twitter:</label>
+                {{form.twitter_estabelecimento}}
+                <span class="helper-text" data-error=""></span>
+            </div>
+            <div class="input-field col s6">
+                <label for="instagram_estabelecimento">Instagram:</label>
+                {{form.instagram_estabelecimento}}
+                <span class="helper-text" data-error=""></span>
+            </div>
+
+            <div class="file-field input-field col s6">
+                <div class="btn waves-effect waves-light grey darken-1">
+                    <span>Foto</span>
+                    {{form.imagem_estabelecimento}}
+                    <span class="helper-text" data-error=""></span>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path" type="text">
+                </div>
+            </div>
+            <div class="col s6 right-align">
+                <a class="btn waves-effect waves-light grey darken-1" id="cadastrar" v-on:click="validaCampos">Cadastrar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#formEstabelecimento',
+        data: {
+            razao_social: '',
+            descricao_estabelecimento: '',
+            cnpj: '',
+            email_estabelecimento: '',
+            telefone_estabelecimento: '',
+            telefoneAlternativo_estabelecimento: '',
+            site_estabelecimento: '',
+            facebook_estabelecimento: '',
+            twitter_estabelecimento: '',
+            instagram_estabelecimento: '',
+            wrongRazao: '',
+            wrongDescricao: '',
+            wrongCnpj: '',
+            wrongEmail: '',
+            wrongTelefone: '',
+            wrongOutroTelefone: '',
+        },
+        methods: {
+            validaCampos: function () {
+                if (this.razao_social.length < 3 || this.razao_social.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ. ]+$/) == null) {
+                    document.getElementById("razao_social").focus();
+                    this.wrongRazao = 'Razão social invalida';
+                    document.getElementById("razao_social").classList.add("invalid");
+                    return 0;
+                }
+                if (this.descricao_estabelecimento.length < 3 || this.descricao_estabelecimento.match(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ. ]+$/) == null) {
+                    document.getElementById("descricao_estabelecimento").focus();
+                    this.wrongDescricao = 'Descrição só pode conter letras';
+                    document.getElementById("descricao_estabelecimento").classList.add("invalid");
+                    return 0;
+                }
+                if (this.cnpj.length < 14) {
+                    document.getElementById("cnpj").focus();
+                    this.wrongCnpj = 'cnpj Invalido';
+                    document.getElementById("cnpj").classList.add("invalid");
+                    return 0;
+                }
+                if (!this.validaEmail()) {
+                    document.getElementById("email_estabelecimento").focus();
+                    this.wrongEmail = 'Email Invalido';
+                    document.getElementById("email_estabelecimento").classList.add("invalid");
+                    return 0;
+                }
+                if (this.telefone_estabelecimento.length < 9) {
+                    document.getElementById("telefone_estabelecimento").focus();
+                    this.wrongTelefone = 'Telefone Invalido';
+                    document.getElementById("telefone_estabelecimento").classList.add("invalid");
+                    return 0;
+                }
+                if (this.telefoneAlternativo_estabelecimento != '' && this.telefoneAlternativo_estabelecimento.length < 9) {
+                    document.getElementById("telefoneAlternativo_estabelecimento").focus();
+                    this.wrongOutroTelefone = 'Telefone Invalido';
+                    document.getElementById("telefoneAlternativo_estabelecimento").classList.add("invalid");
+                    return 0;
+                }
+                document.formEstabelecimento.submit();
+            },
+            validaEmail: function () {
+                usuario = this.email_estabelecimento.substring(0, this.email_estabelecimento.indexOf("@"));
+                dominio = this.email_estabelecimento.substring(this.email_estabelecimento.indexOf("@") + 1, this.email_estabelecimento.length);
+                if ((usuario.length >= 1) && (dominio.length >= 3) && (usuario.search("@") == -1) &&
+                    (dominio.search("@") == -1) && (usuario.search(" ") == -1) && (dominio.search(" ") == -1) &&
+                    (dominio.search(".") != -1) && (dominio.indexOf(".") >= 1) && (dominio.lastIndexOf(".") < dominio.length - 1)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            },
+
+        },
+        mounted: function () {
+            document.formEstabelecimento.addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("cadastrar").click();
+                }
+            });
+        },
+    })
+</script>
+
+{% endblock %}

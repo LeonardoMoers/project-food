@@ -1,21 +1,42 @@
-"""project URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
+from django.urls import reverse
+from django.conf import settings
+from django.conf.urls import include, url
+from django.contrib import admin
+from django.contrib.auth import views as auth_views
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import activate
+from django.conf.urls.static import static
+
+from QuentinhaFood import views as my_views
+
+# python manage.py makemigrations
+
+# python manage.py migrate --run-syncdb
+
+urlpatterns = i18n_patterns(
+    url(r'^$', my_views.listaEstabelecimentos, name='index'),
+    url(r'admin/', admin.site.urls),
+    url(r'^usuario/$', my_views.CadastroUsuario.as_view(), name='usuario'),
+    url(r'^editar/(?P<user_id>\w+)/$', my_views.CadastroUsuario.as_view(), name='update_usuario'),
+    url(r'^perfil/$', my_views.perfilUsuario, name='perfil_usuario'),
+
+    url(r'^entrar/$', auth_views.LoginView.as_view(
+        template_name='usuario/login.html'),
+        name='login'),
+
+    url(r'^sair/$', auth_views.LogoutView.as_view(
+        next_page='listaEstabelecimentos'),
+        name='logout'),
+
+
+    url(r'^cadastro_produto/$', my_views.add_produto, name='cadastroProduto'),
+    url(r'^cadastro_estabelecimento/$', my_views.add_estabelecimento,
+        name='cadastroEstabelecimento'),
+    url(r'^lista_estabelecimento/$', my_views.listaEstabelecimentos,
+        name='listaEstabelecimentos'),
+
+    url(r'^lista_estabelecimento/(?P<pk>\w+)/$', my_views.listaProdutos, name='listaProdutos'),
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

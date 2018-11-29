@@ -1,0 +1,46 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-24 18:12-0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\QuentinhaFood\models\estabelecimento.py:11
+#: .\QuentinhaFood\models\usuario.py:16
+#, python-format
+msgid "%(value)s não é válido, ppor favor siga o exemplo: (xx) 9 XXXX-XXXX or XXXX-XXXX"
+msgstr "%(value)s is not valid, please follow example: (xx) 9 XXXX-XXXX or XXXX-XXXX"
+
+#: .\QuentinhaFood\models\usuario.py:9
+#, python-format
+msgid "%(value)s não é válido"
+msgstr "%(value)s is not valid"
+
+#: .\QuentinhaFood\views\usuario.py:40
+msgid "Seus dados foram atualizados!"
+msgstr "Your data has been updated!"
+
+#: .\QuentinhaFood\views\usuario.py:43 .\QuentinhaFood\views\usuario.py:59
+msgid "Ocorreu um erro!"
+msgstr "An error has occurred!"
+
+#: .\project\settings.py:22
+msgid "Brazilian (Portuguese)"
+msgstr ""
+
+#: .\project\settings.py:23
+msgid "English"
+msgstr ""

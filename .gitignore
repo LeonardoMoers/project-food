@@ -1,13 +1,32 @@
 # Byte-compiled / optimized / DLL files
+
 __pycache__/
 *.py[cod]
 *$py.class
 
 .idea/
-
-
 # C extensions
 *.so
+
+#yarn
+project/static/node_modules
+
+#migrations
+00*_*
+
+# JPEG
+*.jpg
+*.jpeg
+*.jpe
+*.jif
+*.jfif
+*.jfi
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # Distribution / packaging
 .Python

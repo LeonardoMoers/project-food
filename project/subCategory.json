@@ -1,0 +1,151 @@
+[{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"1",
+	"subCategoria_produto": "Refrigerantes"
+  }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+"categoria_idcategoria":"1",
+	"subCategoria_produto": "Cervejas"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"1",
+	"subCategoria_produto": "Vinhos"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+"categoria_idcategoria":"1",
+	"subCategoria_produto": "Destilados"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"1",
+	"subCategoria_produto": "Sucos"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"2",
+	"subCategoria_produto": "Massas"
+  }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+"categoria_idcategoria":"2",
+	"subCategoria_produto": "Sopas"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"2",
+	"subCategoria_produto": "Risotos"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+"categoria_idcategoria":"2",
+	"subCategoria_produto": "Legumes"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"2",
+	"subCategoria_produto": "Tortas"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"3",
+	"subCategoria_produto": "Assados"
+  }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+"categoria_idcategoria":"3",
+	"subCategoria_produto": "Empanados e salgadinhos"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"3",
+	"subCategoria_produto": "Porções"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+"categoria_idcategoria":"3",
+	"subCategoria_produto": "Sanduíches"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"3",
+	"subCategoria_produto": "Pastéis"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"4",
+	"subCategoria_produto": "Pequena"
+  }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+"categoria_idcategoria":"4",
+	"subCategoria_produto": "Média"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"4",
+	"subCategoria_produto": "Grande"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+"categoria_idcategoria":"4",
+	"subCategoria_produto": "Gigante"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"4",
+	"subCategoria_produto": "Família"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"5",
+	"subCategoria_produto": "Saladas"
+  }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+"categoria_idcategoria":"5",
+	"subCategoria_produto": "Frios"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"5",
+	"subCategoria_produto": "Laticínios"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+"categoria_idcategoria":"5",
+	"subCategoria_produto": "Doces"
+   }},
+{
+	"model": "QuentinhaFood.SubCategoria",
+	"fields": {
+	"categoria_idcategoria":"5",
+	"subCategoria_produto": "Bolos"
+   }}
+]
