@@ -15,9 +15,9 @@ class Usuario_teste(TestCase):
 	
 	def test_cpf(self):
 		self.assertEquals(validate_cpf('12345678910'), True)
-		# self.assertEquals(validate_cpf('123456789101112'), ValidationError())
+		self.assertEquals(validate_cpf('123456789101112'), False)
 	
 	def test_telefone(self):
 		self.assertEquals(validate_phone('12345678'), True)
-		# self.assertEquals(validate_phone('1234567891011'), ValidationError())
+		self.assertEquals(validate_phone('1234567891011'), False)
 		
