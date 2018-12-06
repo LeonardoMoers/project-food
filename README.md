@@ -13,5 +13,6 @@ Usar `manage.py loaddata subCategory.json` segundo.
 #Locale
 
 Usar `manage.py compilemessages`
-Hospedagem:
+
+#Hospedagem:
 http://gabrielduarte.pythonanywhere.com
